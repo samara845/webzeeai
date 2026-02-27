@@ -4,18 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WebZee| webzee tech hub.</title>
+   <meta name="description" content="All learning resources in one platform to become a full stake developer, online all resources available at WebZee , learn - frontend, backend, database, full stake development, frameworks, and practice coding... in WebZee.in ">
+    
+<meta name="keywords" content="learn coding online India, web development course for students, full stack development course India, web development learning platform, frontend backend development tutorial, HTML CSS JavaScript tutorial, web development roadmap, free coding learning resources, developer learning platform, WebZee">
+
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 
 <body>
 
-<header>
+<header id="home">
     
+<div class="start">
+     <div class="hamburger" id="hamburger">☰</div>
 <h1>WebZee</h1>
+</div>
+<p style="font-size: larger; font-weight:bold; ">All Resources to Become Full Stack Developer | Online All resources available </p>
 
-<p>All Resources to Become Full Stack Developer | Online All resources available </p>
+<div class="search">
+  <input type="search" id="courseSearch" list="courses" placeholder="Search learning Resources...">
 
-<div class="hamburger" id="hamburger">☰</div>
+<datalist id="courses">
+    <option value="frontend">
+    <option value="javascript">
+    <option value="framework">
+    <option value="backend">
+    <option value="database">
+    <option value="full stack development">
+    <option value="practice">
+</datalist> 
+
+
+</div> 
+
 
 <div class="nav">
     <nav>
@@ -24,14 +46,12 @@
 <ul class="menu" id="menu">
 
 
-   <li><a href="#frontend">Frontend</a></li>
-        <li><a href="#javascript">Advanced Javascript</a></li>
-        <li><a href="#framework">Frontent Framework</a></li>
-        <li><a href="#backend">Backend</a></li>
-        <li><a href="#database">Database</a></li>
-        <li><a href="#full">Full Stake Development</a></li>
-        <li><a href="#practice">Practice Platforms</a></li>
-       <li><button onclick="toggleTheme()">Theme Switch</button></li>
+   <li><a href="#home">Home</a></li>
+   <li><a href="#about">About Us</a></li>
+   <li><a href="#blog">Blog</a></li>
+   <li><a href="#ask">Ask AI</a></li>
+   <li><a href="#yt">YT Videos</a></li>
+   <li><button onclick="toggleTheme()">Theme Switch</button></li>
 </ul>
 
 
@@ -45,7 +65,7 @@
 </div>
 
 </header>
-
+<h1>Learning Resources</h1>
 <div class="container">
 
 <!-- Frontend -->
@@ -175,6 +195,38 @@
 
 </div>
 
+<footer><div class="fot">
+    &copy; WebZee.in All Rights Reserved. 2026
+</div>
+<h4>About WebZee</h4>
+<div class="about" id="about">
+    <p>WebZee is a modern learning platform designed to help students and developers become skilled full stack web developers. Our mission is to provide high-quality resources, tools, and guidance to help learners build real-world development skills and grow their careers in the technology industry.
+
+At WebZee, we provide structured learning paths covering frontend development, backend technologies, databases, and programming tools. We aim to make web development learning simple, accessible, and practical for beginners as well as advanced learners.
+
+We believe in learning by doing. That’s why WebZee focuses on providing trusted resources, development platforms, and industry-relevant technologies that help users gain hands-on experience and stay updated with modern web trends.
+
+Our goal is to build a strong developer community where learners can grow, innovate, and succeed in their journey toward becoming professional developers.
+
+WebZee — Learn. Build. Grow.</p>
+</div>
+
+    <h3>Quick Links</h3>
+    <div class="quick">
+        <li><a href="#home">Home</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#ask">Ask Ai</a></li>
+    <li><a href="#learning">Learning Resources</a></li>
+    </div>
+
+<div class="icons">
+    <i class="fa-brands fa-instagram"></i>
+    <i class="fa-brands fa-facebook"></i>
+    <i class="fa-brands fa-x-twitter"></i>
+    <i class="fa-brands fa-youtube"></i>
+</div>
+</footer>
+
 <script>
 
     function toggleTheme(){
@@ -188,6 +240,28 @@ const menu = document.getElementById("menu");
 
 hamburger.addEventListener("click", () => {
 menu.classList.toggle("active");
+});
+
+
+document.getElementById("courseSearch").addEventListener("change", function () {
+
+    let value = this.value.toLowerCase().trim();
+
+    let routes = {
+        "frontend": "#frontend",
+        "javascript": "#javascript",
+        "framework": "#framework",
+        "backend": "#backend",
+        "database": "#database",
+        "full stack development": "#full",
+        "practice": "#practice"
+    };
+
+    if (routes[value]) {
+        window.location.href = routes[value]; // open section
+    } else {
+        alert("Course not found");
+    }
 });
 
 </script>

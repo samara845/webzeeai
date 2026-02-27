@@ -6,12 +6,22 @@ background:#f4f4f4;
 
 header{
 text-align:center;
-background:#189202;
-color:rgb(5, 5, 5);
+background:linear-gradient(45deg,rgb(3, 3, 3),rgb(2, 4, 67));
+color:rgb(14, 141, 7);
 padding:20px;
-height: 150px;
+height: 200px;
 }
 
+.search{
+    padding: 30px;
+    margin-top: -25px;
+}
+input{
+    padding: 10px;
+    width: 300px;
+    border-radius: 30px;
+    border: none;
+}
 h1{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
@@ -28,16 +38,16 @@ h1{
     align-items: center;
     justify-content: center;
     text-align: center;
-    
     width: 75%;
-    
+    margin-top: -15px;
     font-weight: bold;
     border-radius: 40px;
     margin-left: 13%;
 }
+
 button{
     background-color: transparent;
-    color: rgb(12, 12, 12);
+    color: rgb(250, 253, 250);
     border: none;
     padding: 0px;
      font-size: large;
@@ -74,7 +84,7 @@ border-radius:5px;
 /* Dark mode */
 .dark{
 background:black;
-color:white;
+color:rgb(4, 157, 9);
 }
 
 .dark .card{
@@ -82,7 +92,49 @@ background:rgb(26, 26, 26);
 }
 
 
+footer{
+    background: linear-gradient(45deg,black,rgb(2, 2, 61));
+    color: white;
+}
+.quick,li,a{
+    margin-left: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+h3{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.fot{
+    
+    width: fit-content;
+    margin-left: 35%;
+    font-size: larger;
+    font-weight: bold;
+    padding: 20px;
 
+}
+.icons{
+    margin-left: 5%;
+    margin-top: 30px;
+    gap: 30px;
+    font-size: xx-large;
+}
+h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+}
+.about{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: 5%;
+}
 
 
 /* Menu */
@@ -98,15 +150,16 @@ margin-left:20px;
 }
 
 .menu li a{
-color:rgb(9, 9, 9);
+color:rgb(251, 254, 251);
 text-decoration:none;
 }
 
 /* Hamburger */
 .hamburger{
     width: fit-content;
-    margin-top: -30%;
+    margin-top: -5px;
     font-weight: bold;
+    color: white;
 display:none;
 font-size:28px;
 cursor:pointer;
@@ -121,25 +174,89 @@ flex-direction:column;
 position:absolute;
 top:80px;
 left:0;
-width:fit-content;
+width:95%;
 height: 100%;
-background:#038b0c;
+background:linear-gradient(45deg,rgb(3, 3, 3),rgb(2, 4, 67));
 }
 
-
+input{
+    padding: 10px;
+    width: 300px;
+    border-radius: 30px;
+    border: none;
+}
 .menu.active{
 display:flex;
 }
 
 .menu li{
-padding:20px;
+padding:50px;
 text-align:center;
-border-bottom:1px solid #444;
+justify-content: center;
 text-decoration: none;
 }
 
+
+header{
+text-align:center;
+background:linear-gradient(45deg,rgb(3, 3, 3),rgb(2, 4, 67));
+color:rgb(14, 141, 7);
+padding:20px;
+height: 250px;
+}
+.start{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 95px;
+}
 .hamburger{
 display:block;
+}
+
+footer{
+    background: linear-gradient(45deg,black,rgb(2, 2, 61));
+    color: white;
+}
+.quick,li,a{
+    margin-left: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+}
+h3{
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.fot{
+    
+    width: fit-content;
+    margin-left: 10%;
+    font-size: medium;
+    
+    padding: 20px;
+
+}
+.icons{
+    margin-left: 5%;
+    margin-top: 30px;
+    gap: 30px;
+    font-size: xx-large;
+    padding-bottom: 30px;
+}
+h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: x-large;
+}
+.about{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: 5%;
 }
 
 }
