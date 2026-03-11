@@ -1,9 +1,22 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
+
 body{
     background: linear-gradient(45deg, rgb(1, 1, 88), black);
     color: white;
+    margin-bottom: 5%;
+}
+a{
+    background-color: white;
+    padding: 5px;
+}
+img{
+    height: 400px;
+    width: 600px;
+    margin: auto;
+}
+@media (max-width: 600px) {
+    img{
+    height: 200px;
+    width: 400px;
+    margin: auto;
+}
 }

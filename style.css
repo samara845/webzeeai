@@ -11,6 +11,11 @@ color:rgb(14, 141, 7);
 padding:20px;
 height: 200px;
 }
+.ads,img{
+    margin: auto;
+    height: 400px;
+    width: 80%;
+}
 
 .search{
     padding: 30px;
