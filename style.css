@@ -10,11 +10,16 @@ background:linear-gradient(45deg,rgb(3, 3, 3),rgb(2, 4, 67));
 color:rgb(14, 141, 7);
 padding:20px;
 height: 200px;
+width: 100%;
 }
 .ads,img{
     margin: auto;
-    height: 400px;
+    height: 550px;
     width: 80%;
+}
+.ads{
+    height: 250px;
+    margin-bottom: 60%;
 }
 
 .search{
@@ -208,6 +213,7 @@ background:linear-gradient(45deg,rgb(3, 3, 3),rgb(2, 4, 67));
 color:rgb(14, 141, 7);
 padding:20px;
 height: 250px;
+width: 100%;
 }
 .start{
     display: flex;
