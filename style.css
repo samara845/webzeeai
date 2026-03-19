@@ -9,7 +9,7 @@ text-align:center;
 background:linear-gradient(45deg,rgb(3, 3, 3),rgb(2, 4, 67));
 color:rgb(14, 141, 7);
 padding:20px;
-height: 200px;
+height: 250px;
 width: 100%;
 }
 .ads,img{
@@ -228,6 +228,7 @@ display:block;
 footer{
     background: linear-gradient(45deg,black,rgb(2, 2, 61));
     color: white;
+    width: 450px;
 }
 .quick,li,a{
     margin-left: 10px;
@@ -248,6 +249,17 @@ h3{
     
     padding: 20px;
 
+}
+
+.ads,img{
+    margin: auto;
+    height: 480px;
+    width: 90%;
+    
+}
+.ads{
+    height: 250px;
+    margin-bottom: 80%;
 }
 .icons{
     margin-left: 5%;

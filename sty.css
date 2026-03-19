@@ -8,6 +8,9 @@ margin-bottom: 5%;
 h1{
     margin: 10px;
 }
+#courseSearch{
+    margin-inline-start: 0%;
+}
 .cont{
    
     height: 400px;
@@ -43,11 +46,43 @@ h5{
     float: left;
     gap: 20px;
 }
+.as{
+    color: black;
+}
 .col{
     height: 280px;
     width: 100%;
     
 
+}
+#cont{
+    margin-top: 1000px;
+}
+form{
+    background-color: beige;
+    border: 1px solid green;
+    border-radius: 30px;
+    padding: 20px;
+    width: 100%;
+}
+input{
+    margin-top: 15px;
+    border: 1px solid black ;
+    margin-inline-start: 35%;
+
+}
+textarea{
+    width: 310px;
+    border-radius: 30px;
+    margin-top: 10px;
+    height: 100px;
+    margin-inline-start: 35%;
+}
+#btn{
+    background-color: green;
+    border-radius: 35px;
+    width: auto;
+    font-weight: bold;
 }
 h3{
     width: 100px;
@@ -91,8 +126,8 @@ h1{
     align-items: center;
     justify-content: center;
     height: 400px;
-    width: 100%;
-    margin: 10px;
+    width: 440px;
+    
     
     gap: 20px;
     
@@ -100,9 +135,41 @@ h1{
 }
 .col{
     height: 280px;
-    width: 100%;
+    width: auto;
     padding: 40px;
 
+}
+
+#cont{
+    margin-top: 1000px;
+}
+
+
+form{
+    background-color: beige;
+    border: 1px solid green;
+    border-radius: 30px;
+    padding: 20px;
+    width: 100%;
+}
+input{
+    margin-top: 15px;
+    border: 1px solid black ;
+    margin-inline-start: 0%;
+
+}
+textarea{
+    width: 310px;
+    border-radius: 30px;
+    margin-top: 10px;
+    height: 100px;
+    margin-inline-start: 0%;
+}
+#btn{
+    background-color: green;
+    border-radius: 35px;
+    width: auto;
+    font-weight: bold;
 }
 .boxes,.box{
     height: 380px;
