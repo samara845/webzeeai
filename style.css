@@ -177,7 +177,12 @@ cursor:pointer;
 
 /* Mobile */
 @media(max-width:680px){
-
+body{
+font-family: Arial;
+margin:0;
+background:#f4f4f4;
+overflow-x: hidden;
+}
 .menu{
 display:none;
 flex-direction:column;
@@ -213,7 +218,7 @@ background:linear-gradient(45deg,rgb(3, 3, 3),rgb(2, 4, 67));
 color:rgb(14, 141, 7);
 padding: 37.5px;
 height: 250px;
-width: 100%;
+width: 50vh;
 }
 .start{
     display: flex;
@@ -228,7 +233,7 @@ display:block;
 footer{
     background: linear-gradient(45deg,black,rgb(2, 2, 61));
     color: white;
-    width: 470px;
+    width: 55vh;
     padding: 3px;
 }
 .quick,li,a{
