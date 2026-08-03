@@ -1,335 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="OZzhLbnTj8BDBYEJ3faaqp69Wo3Tc-0knwP-lhXQHnM" />
+<meta name="google-site-verification" content="OZzhLbnTj8BDBYEJ3faaqp69Wo3Tc-0knwP-lhXQHnM" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free web development Resources | WebZee</title>
-<link rel="icon" type="png"  href="webzee logo.png">
-    <meta name="monetag" content="6289c299197a28ff400fcf13da9381c0">
-   <meta name="description" content="All learning resources in one platform to become a full stake developer, online all resources available at WebZee , learn - frontend, backend, database, full stake development, frameworks, and practice coding... in WebZee.in ">
-    
+<link rel="icon" type="png" href="webzee logo.png">
+<meta name="monetag" content="6289c299197a28ff400fcf13da9381c0">
+<meta name="description" content="All learning resources in one platform to become a full stake developer, online all resources available at WebZee , learn - frontend, backend, database, full stake development, frameworks, and practice coding... in WebZee.in ">
 <meta name="keywords" content="learn coding online India, web development course for students, full stack development course India, web development learning platform, frontend backend development tutorial, HTML CSS JavaScript tutorial, web development roadmap, free coding learning resources, developer learning platform, WebZee">
-
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+<style>
+  :root{
+    --bg:#0b0f1a;
+    --bg-soft:#0f1421;
+    --surface:#141b2b;
+    --surface-2:#1a2338;
+    --border:rgba(255,255,255,.08);
+    --text:#e9ecf4;
+    --text-dim:#8b93ac;
+    --html:#e34f26;
+    --js:#f7df1e;
+    --react:#61dafb;
+    --node:#68a063;
+    --db:#6c63ff;
+    --full:#c063ff;
+    --practice:#f1502f;
+    --radius:16px;
+  }
+  body.light{
+    --bg:#f5f6fb;
+    --bg-soft:#ffffff;
+    --surface:#ffffff;
+    --surface-2:#eef0f8;
+    --border:rgba(20,25,45,.08);
+    --text:#141824;
+    --text-dim:#5c6280;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    transition:background .4s ease,color .4s ease;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif; margin:0;}
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- background ambience ---------- */
+  .glow{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(600px circle at 15% -10%, rgba(97,218,251,.12), transparent 60%),
+      radial-gradient(500px circle at 90% 10%, rgba(247,223,30,.08), transparent 60%);
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,15,26,.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+    padding:14px 24px;
+  }
+  body.light header{background:rgba(255,255,255,.75);}
+  .start{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .hamburger{
+    display:none; cursor:pointer; font-size:22px;
+    width:40px; height:40px; align-items:center; justify-content:center;
+    border-radius:10px; border:1px solid var(--border);
+  }
+  .start h1:first-of-type{
+    font-size:22px; letter-spacing:.5px;
+    background:linear-gradient(90deg,var(--react),var(--js));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .start h1:last-of-type{font-size:14px; font-weight:500; color:var(--text-dim); font-family:'Inter';}
+  .tagline{margin:6px 0 14px; color:var(--text-dim); font-size:14px;}
+
+  .search{max-width:420px; margin-bottom:12px;}
+  .search input{
+    width:100%; padding:11px 16px; border-radius:10px;
+    border:1px solid var(--border); background:var(--surface);
+    color:var(--text); font-family:'JetBrains Mono',monospace; font-size:13px;
+    outline:none; transition:border-color .2s, box-shadow .2s;
+  }
+  .search input:focus{border-color:var(--react); box-shadow:0 0 0 3px rgba(97,218,251,.15);}
+
+  .nav{width:100%;}
+  .menu{
+    list-style:none; display:flex; gap:22px; padding:0; margin:0;
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:.5px; text-transform:uppercase;
+  }
+  .menu li a, .menu li button{
+    background:none; border:none; color:var(--text-dim); cursor:pointer;
+    font-family:inherit; font-size:inherit; letter-spacing:inherit; text-transform:inherit;
+    position:relative; padding:4px 0;
+  }
+  .menu li a::after, .menu li button::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--react); transition:width .25s ease;
+  }
+  .menu li a:hover, .menu li button:hover{color:var(--text);}
+  .menu li a:hover::after, .menu li button:hover::after{width:100%;}
+
+  @media (max-width:760px){
+    .hamburger{display:flex;}
+    .menu{
+      position:fixed; top:0; right:-260px; height:100vh; width:240px;
+      flex-direction:column; background:var(--surface); padding:80px 24px;
+      transition:right .35s ease; box-shadow:-10px 0 30px rgba(0,0,0,.4);
+    }
+    .menu.active{right:0;}
+  }
+
+  /* ---------- hero terminal ---------- */
+  .hero{
+    position:relative; z-index:1; padding:56px 24px 40px; max-width:900px; margin:0 auto;
+  }
+  .terminal{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.35);
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px; padding:10px 14px;
+    background:var(--surface-2); border-bottom:1px solid var(--border);
+  }
+  .term-bar span{width:11px; height:11px; border-radius:50%; display:inline-block;}
+  .term-bar span:nth-child(1){background:#ff5f56;}
+  .term-bar span:nth-child(2){background:#ffbd2e;}
+  .term-bar span:nth-child(3){background:#27c93f;}
+  .term-bar em{margin-left:auto; font-style:normal; font-size:12px; color:var(--text-dim); font-family:'JetBrains Mono',monospace;}
+  .term-body{padding:22px 20px; font-family:'JetBrains Mono',monospace; font-size:14.5px; min-height:120px; line-height:1.7;}
+  .term-body .cursor{display:inline-block; width:8px; background:var(--react); animation:blink 1s steps(1) infinite; margin-left:2px;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---------- sections ---------- */
+  h1.page-title{
+    text-align:center; font-size:clamp(26px,4vw,38px); margin:36px 0 30px; position:relative; z-index:1;
+  }
+  .container{max-width:1160px; margin:0 auto; padding:0 24px 60px; position:relative; z-index:1;}
+  section{margin-bottom:56px; opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease;}
+  section.in-view{opacity:1; transform:translateY(0);}
+
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:14px;}
+  .sec-num{font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--accent); opacity:.85;}
+  .sec-head h2{font-size:22px;}
+
+  #frontend{--accent:var(--html);}
+  #javascript{--accent:var(--js);}
+  #framework{--accent:var(--react);}
+  #backend{--accent:var(--node);}
+  #database{--accent:var(--db);}
+  #full{--accent:var(--full);}
+  #practice{--accent:var(--practice);}
+
+  .cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:18px;}
+  .card{
+    background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent);
+    border-radius:12px; padding:20px; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .card:hover{transform:translateY(-6px); box-shadow:0 16px 34px rgba(0,0,0,.3), 0 0 0 1px var(--accent) inset; }
+  .card h3{font-size:16px; margin-bottom:8px;}
+  .card p{font-size:13.5px; color:var(--text-dim); margin:0 0 14px; line-height:1.5;}
+  .card a{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--accent); font-weight:600;}
+  .card a::after{content:' →'; transition:margin .2s ease;}
+  .card a:hover::after{margin-left:4px;}
+
+  .ads{
+    grid-column:1/-1; border-radius:12px; overflow:hidden; position:relative;
+    border:1px solid var(--border); background:var(--surface-2);
+  }
+  .ads h5{position:absolute; top:10px; left:14px; margin:0; font-family:'JetBrains Mono',monospace; font-size:11px; padding:4px 10px; background:rgba(0,0,0,.55); border-radius:20px; color:#fff; letter-spacing:.5px;}
+  .ads img{width:100%; display:block; transition:transform .4s ease;}
+  .ads:hover img{transform:scale(1.03);}
+
+  /* ---------- footer ---------- */
+  footer{
+    position:relative; z-index:1; border-top:1px solid var(--border); background:var(--bg-soft);
+    padding:44px 24px 30px;
+  }
+  .fot{text-align:center; color:var(--text-dim); font-size:13px; margin-bottom:26px;}
+  footer h4{text-align:center; font-size:18px; margin-bottom:14px;}
+  .about{max-width:760px; margin:0 auto 30px; color:var(--text-dim); font-size:14px; line-height:1.7; text-align:center;}
+  footer h3{text-align:center; font-size:14px; text-transform:uppercase; letter-spacing:1px; color:var(--text-dim); margin-bottom:10px;}
+  .quick{list-style:none; display:flex; justify-content:center; gap:20px; padding:0; font-size:13px;}
+  .quick a:hover{color:var(--react);}
+  .icons{display:flex; justify-content:center; gap:18px; margin-top:24px; font-size:18px;}
+  .icons i{
+    width:40px; height:40px; display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--border); border-radius:50%; transition:transform .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .icons i:hover{transform:translateY(-4px); color:var(--react); border-color:var(--react);}
+
+  /* back to top */
+  #toTop{
+    position:fixed; right:22px; bottom:22px; width:44px; height:44px; border-radius:50%;
+    background:var(--surface); border:1px solid var(--border); color:var(--text);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:60;
+    opacity:0; pointer-events:none; transform:translateY(10px); transition:opacity .3s, transform .3s;
+  }
+  #toTop.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+</style>
 </head>
 
-
-
 <body>
-    
+<div class="glow"></div>
 
 <header id="home">
-    
-<div class="start">
-     <div class="hamburger" id="hamburger">☰</div>
-<h1>WebZee</h1>
-<h1>Free Web Development Learning Resources </h1>
-</div>
-<p style="font-size: larger; font-weight:bold; ">All Resources to Become Full Stack Developer | Online All resources available </p>
+  <div class="start">
+    <div class="hamburger" id="hamburger">☰</div>
+    <h1>WebZee</h1>
+    <h1>Free Web Development Learning Resources</h1>
+  </div>
+  <p class="tagline">All Resources to Become Full Stack Developer &nbsp;|&nbsp; Online, all resources available</p>
 
-<div class="search">
-  <input type="search" id="courseSearch" list="courses" placeholder="Search  Resources...">
+  <div class="search">
+    <input type="search" id="courseSearch" list="courses" placeholder="&gt; search resources... (frontend, backend, database...)">
+    <datalist id="courses">
+      <option value="frontend">
+      <option value="javascript">
+      <option value="framework">
+      <option value="backend">
+      <option value="database">
+      <option value="full stack development">
+      <option value="practice">
+    </datalist>
+  </div>
 
-<datalist id="courses">
-    <option value="frontend">
-    <option value="javascript">
-    <option value="framework">
-    <option value="backend">
-    <option value="database">
-    <option value="full stack development">
-    <option value="practice">
-</datalist> 
-
-
-</div> 
-
-
-<div class="nav">
+  <div class="nav">
     <nav>
-
-        
-<ul class="menu" id="menu">
-
-
-   <li><a href="index.html">Home</a></li>
-   <li><a href="#about">About Us</a></li>
-   <li><a href="blog.html">Blog</a></li>
-   <li><a href="index2.html">Learn Digital marketing</a></li>
-   <li><a href="index3.html">Learn Web Dev</a></li>
-   <!-- <li><a href="#ask">Ask AI</a></li>
-   <li><a href="#yt">YT Videos</a></li> -->
-   <li><button onclick="toggleTheme()">Theme Switch</button></li>
-</ul>
-
-
-
-
-
-    <ul>
-     
-    </ul>
-</nav>
-</div>
-
+      <ul class="menu" id="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index2.html">Learn Digital Marketing</a></li>
+        <li><a href="index3.html">Learn Web Dev</a></li>
+        <li><button onclick="toggleTheme()">Theme Switch</button></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<h1>Learning Resources</h1>
+<div class="hero">
+  <div class="terminal">
+    <div class="term-bar"><span></span><span></span><span></span><em>webzee.in — learning-path.js</em></div>
+    <div class="term-body"><span id="typed"></span><span class="cursor">&nbsp;</span></div>
+  </div>
+</div>
+
+<h1 class="page-title">Learning Resources</h1>
+
 <div class="container">
 
-<!-- Frontend -->
-<section id="frontend">
-<h2>Frontend Development All Resources </h2>
-
-<div class="card">
-<h3>freeCodeCamp</h3>
-<p>Complete free web development course with certification.</p>
-<a href="https://freecodecamp.org" target="_blank">Visit</a>
-</div>
-
-<div class="card">
-<h3>MDN Web Docs</h3>
-<p>Best documentation for HTML CSS JavaScript.</p>
-<a href="https://developer.mozilla.org" target="_blank">Visit</a>
-</div>
-
-<div class="card">
-<h3>W3Schools</h3>
-<p>Beginner friendly tutorials with examples.</p>
-<a href="https://w3schools.com" target="_blank">Visit</a>
-</div>
-
-<div class="card">
-<h3>CodeWithHarry</h3>
-<p>Hindi web development tutorials.</p>
-<a href="https://youtube.com/@CodeWithHarry" target="_blank">Visit</a>
-</div>
-</section>
-
-<!-- JavaScript -->
-<section id="javascript">
-<h2>⚡ Advanced JavaScript</h2>
-
-<div class="card">
-<h3>JavaScript.info</h3>
-<p>Deep JavaScript concepts.</p>
-<a href="https://javascript.info" target="_blank">Visit</a>
-</div>
-
-<div class="card">
-<h3>Frontend Masters</h3>
-<p>Industry level JavaScript courses.</p>
-<a href="https://frontendmasters.com" target="_blank">Visit</a>
-</div>
-</section>
-
-<!-- Framework -->
-<section id="framework">
-<h2> Frontend Framework All Resources</h2>
-
-<div class="card">
-<h3>React Official</h3>
-<p>Learn React from official docs.</p>
-<a href="https://react.dev" target="_blank">Visit</a>
-</div>
-<div class="ads">
-     <h5>Enroll now</h5>
-    <a href="https://whatsapp.com/channel/0029VbCX4nx9MF8yczarp20G">
-        <img src="ads banner.jpeg" alt="join online live classes via zoom meeting app ">
-        
-    </a>
-   
-</div>
-<div class="card">
-<h3>Scrimba</h3>
-<p>Interactive React learning platform.</p>
-<a href="https://scrimba.com" target="_blank">Visit</a>
-</div>
-</section>
-
-<!-- Backend -->
-<section id="backend">
-<h2>🔥 Backend Development</h2>
-
-<div class="card">
-<h3>Node.js Docs</h3>
-<p>Server-side JavaScript runtime.</p>
-<a href="https://nodejs.org" target="_blank">Visit</a>
-</div>
-
-<div class="card">
-<h3>The Net Ninja</h3>
-<p>Node.js & backend tutorials.</p>
-<a href="https://youtube.com/@NetNinja" target="_blank">Visit</a>
-</div>
-</section>
-
-<!-- Database -->
-<section id="database">
-<h2>Database All Resources</h2>
-
-<div class="card">
-<h3>MongoDB University</h3>
-<p>Free database courses.</p>
-<a href="https://learn.mongodb.com" target="_blank">Visit</a>
-</div>
-</section>
-
-<!-- Full Stack -->
-<section id="full">
-<h2>Full Stack Courses All Resources</h2>
-
-<div class="card">
-<h3>Coursera</h3>
-<p>University level courses.</p>
-<a href="https://coursera.org" target="_blank">Visit</a>
-</div>
-
-<div class="card">
-<h3>Udemy</h3>
-<p>Affordable full stack bootcamps.</p>
-<a href="https://udemy.com" target="_blank">Visit</a>
-</div>
-</section>
-
-<!-- Practice -->
-<section id="practice">
-<h2>Practice Platforms</h2>
-
-<div class="card">
-<h3>GitHub</h3>
-<p>Code hosting and portfolio.</p>
-<a href="https://github.com" target="_blank">Visit</a>
-</div>
-
-<div class="card">
-<h3>Frontend Mentor</h3>
-<p>Real world UI challenges.</p>
-<a href="https://frontendmentor.io" target="_blank">Visit</a>
-</div>
-</section>
-
-</div>
-
-<footer><div class="fot">
-    &copy; WebZee.in All Rights Reserved. 2026
-</div>
-<h4>About WebZee</h4>
-<div class="about" id="about">
-    <p>WebZee is a modern learning platform designed to help students and developers become skilled full stack web developers. Our mission is to provide high-quality resources, tools, and guidance to help learners build real-world development skills and grow their careers in the technology industry.
-
-At WebZee, we provide structured learning paths covering frontend development, backend technologies, databases, and programming tools. We aim to make web development learning simple, accessible, and practical for beginners as well as advanced learners.
-
-We believe in learning by doing. That’s why WebZee focuses on providing trusted resources, development platforms, and industry-relevant technologies that help users gain hands-on experience and stay updated with modern web trends.
-
-Our goal is to build a strong developer community where learners can grow, innovate, and succeed in their journey toward becoming professional developers.
-
-WebZee — Learn. Build. Grow.</p>
-
-<!-- https://youtu.be/HcOc7P5BMi4?si=qzL0w6y6RHIYcduG -->
-
-
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/?v=HcOc7P5BMi4&t=1233s" frameborder="0" allowfullscreen></iframe> -->
-</div>
-
-    <h3>Quick Links</h3>
-    <div class="quick">
-        <li><a href="#home">Home</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#ask">Ask Ai</a></li>
-    <li><a href="#learning">Learning Resources</a></li>
+  <section id="frontend">
+    <div class="sec-head"><span class="sec-num mono">01</span><h2>Frontend Development — All Resources</h2></div>
+    <div class="cards">
+      <div class="card"><h3>freeCodeCamp</h3><p>Complete free web development course with certification.</p><a href="https://freecodecamp.org" target="_blank">Visit</a></div>
+      <div class="card"><h3>MDN Web Docs</h3><p>Best documentation for HTML, CSS and JavaScript.</p><a href="https://developer.mozilla.org" target="_blank">Visit</a></div>
+      <div class="card"><h3>W3Schools</h3><p>Beginner friendly tutorials with examples.</p><a href="https://w3schools.com" target="_blank">Visit</a></div>
+      <div class="card"><h3>CodeWithHarry</h3><p>Hindi web development tutorials.</p><a href="https://youtube.com/@CodeWithHarry" target="_blank">Visit</a></div>
     </div>
+  </section>
 
-<div class="icons">
+  <section id="javascript">
+    <div class="sec-head"><span class="sec-num mono">02</span><h2>Advanced JavaScript</h2></div>
+    <div class="cards">
+      <div class="card"><h3>JavaScript.info</h3><p>Deep JavaScript concepts.</p><a href="https://javascript.info" target="_blank">Visit</a></div>
+      <div class="card"><h3>Frontend Masters</h3><p>Industry level JavaScript courses.</p><a href="https://frontendmasters.com" target="_blank">Visit</a></div>
+    </div>
+  </section>
+
+  <section id="framework">
+    <div class="sec-head"><span class="sec-num mono">03</span><h2>Frontend Frameworks — All Resources</h2></div>
+    <div class="cards">
+      <div class="card"><h3>React Official</h3><p>Learn React from official docs.</p><a href="https://react.dev" target="_blank">Visit</a></div>
+      <div class="ads">
+        <h5>Sponsored</h5>
+        <a href="https://whatsapp.com/channel/0029VbCX4nx9MF8yczarp20G"><img src="ads banner.jpeg" alt="join online live classes via zoom meeting app"></a>
+      </div>
+      <div class="card"><h3>Scrimba</h3><p>Interactive React learning platform.</p><a href="https://scrimba.com" target="_blank">Visit</a></div>
+    </div>
+  </section>
+
+  <section id="backend">
+    <div class="sec-head"><span class="sec-num mono">04</span><h2>Backend Development</h2></div>
+    <div class="cards">
+      <div class="card"><h3>Node.js Docs</h3><p>Server-side JavaScript runtime.</p><a href="https://nodejs.org" target="_blank">Visit</a></div>
+      <div class="card"><h3>The Net Ninja</h3><p>Node.js and backend tutorials.</p><a href="https://youtube.com/@NetNinja" target="_blank">Visit</a></div>
+    </div>
+  </section>
+
+  <section id="database">
+    <div class="sec-head"><span class="sec-num mono">05</span><h2>Database — All Resources</h2></div>
+    <div class="cards">
+      <div class="card"><h3>MongoDB University</h3><p>Free database courses.</p><a href="https://learn.mongodb.com" target="_blank">Visit</a></div>
+    </div>
+  </section>
+
+  <section id="full">
+    <div class="sec-head"><span class="sec-num mono">06</span><h2>Full Stack Courses — All Resources</h2></div>
+    <div class="cards">
+      <div class="card"><h3>Coursera</h3><p>University level courses.</p><a href="https://coursera.org" target="_blank">Visit</a></div>
+      <div class="card"><h3>Udemy</h3><p>Affordable full stack bootcamps.</p><a href="https://udemy.com" target="_blank">Visit</a></div>
+    </div>
+  </section>
+
+  <section id="practice">
+    <div class="sec-head"><span class="sec-num mono">07</span><h2>Practice Platforms</h2></div>
+    <div class="cards">
+      <div class="card"><h3>GitHub</h3><p>Code hosting and portfolio.</p><a href="https://github.com" target="_blank">Visit</a></div>
+      <div class="card"><h3>Frontend Mentor</h3><p>Real world UI challenges.</p><a href="https://frontendmentor.io" target="_blank">Visit</a></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="fot">&copy; WebZee.in All Rights Reserved. 2026</div>
+  <h4>About WebZee</h4>
+  <div class="about" id="about">
+    <p>WebZee is a modern learning platform designed to help students and developers become skilled full stack web developers. Our mission is to provide high-quality resources, tools, and guidance to help learners build real-world development skills and grow their careers in the technology industry.</p>
+    <p>At WebZee, we provide structured learning paths covering frontend development, backend technologies, databases, and programming tools. We aim to make web development learning simple, accessible, and practical for beginners as well as advanced learners.</p>
+    <p>We believe in learning by doing. That's why WebZee focuses on providing trusted resources, development platforms, and industry-relevant technologies that help users gain hands-on experience and stay updated with modern web trends.</p>
+    <p>WebZee — Learn. Build. Grow.</p>
+  </div>
+  <h3>Quick Links</h3>
+  <ul class="quick">
+    <li><a href="#home">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#frontend">Learning Resources</a></li>
+  </ul>
+  <div class="icons">
     <i class="fa-brands fa-instagram"></i>
     <i class="fa-brands fa-facebook"></i>
     <i class="fa-brands fa-x-twitter"></i>
     <i class="fa-brands fa-youtube"></i>
-</div>
+  </div>
 </footer>
 
+<button id="toTop" aria-label="Back to top">↑</button>
+
 <script>
+function toggleTheme(){ document.body.classList.toggle("light"); }
 
-    
-
-    function toggleTheme(){
-document.body.classList.toggle("dark");
-}
-
-
-/* Toggle Menu */
 const hamburger = document.getElementById("hamburger");
 const menu = document.getElementById("menu");
-
-hamburger.addEventListener("click", () => {
-menu.classList.toggle("active");
-});
-
+hamburger.addEventListener("click", () => menu.classList.toggle("active"));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('active')));
 
 document.getElementById("courseSearch").addEventListener("change", function () {
-
-    let value = this.value.toLowerCase().trim();
-
-    let routes = {
-        "frontend": "#frontend",
-        "javascript": "#javascript",
-        "framework": "#framework",
-        "backend": "#backend",
-        "database": "#database",
-        "full stack development": "#full",
-        "practice": "#practice"
-    };
-
-    if (routes[value]) {
-        window.location.href = routes[value]; // open section
-    } else {
-        alert("Course not found");
-    }
+  let value = this.value.toLowerCase().trim();
+  let routes = {
+    "frontend": "#frontend","javascript": "#javascript","framework": "#framework",
+    "backend": "#backend","database": "#database","full stack development": "#full","practice": "#practice"
+  };
+  if (routes[value]) window.location.href = routes[value];
+  else alert("Course not found");
 });
 
+/* scroll reveal */
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('section').forEach(s => obs.observe(s));
+
+/* back to top */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', () => toTop.classList.toggle('show', window.scrollY > 500));
+toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+/* terminal typing effect */
+const snippets = [
+  { text: '<h1>Hello, WebZee</h1>', color: 'var(--html)' },
+  { text: 'body { color: #2965f1; }', color: 'var(--react)' },
+  { text: 'const learn = () => "JavaScript";', color: 'var(--js)' },
+  { text: 'function App(){ return <Home/>; }', color: 'var(--react)' },
+  { text: "require('express')();", color: 'var(--node)' }
+];
+const typedEl = document.getElementById('typed');
+let si = 0;
+function typeLoop(){
+  const item = snippets[si % snippets.length];
+  let i = 0;
+  typedEl.style.color = item.color;
+  typedEl.textContent = '';
+  const typeInt = setInterval(() => {
+    typedEl.textContent += item.text[i];
+    i++;
+    if (i >= item.text.length){
+      clearInterval(typeInt);
+      setTimeout(() => {
+        let j = item.text.length;
+        const delInt = setInterval(() => {
+          typedEl.textContent = item.text.slice(0, j);
+          j--;
+          if (j < 0){ clearInterval(delInt); si++; typeLoop(); }
+        }, 25);
+      }, 1400);
+    }
+  }, 45);
+}
+typeLoop();
 </script>
-
-
-<!-- <script src="sw (9).js"></script>
-<script src="sw (10).js"></script>
-
-<script>(function(s){s.dataset.zone='10701579',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-
-<script src="https://5gvci.com/act/files/tag.min.js?z=10701594" data-cfasync="false" async></script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9969736504493550"
-     crossorigin="anonymous"></script>
-     
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9969736504493550"
-     crossorigin="anonymous"></script>
-
-     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9969736504493550"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-fb+5w+4e-db+86"
-     data-ad-client="ca-pub-9969736504493550"
-     data-ad-slot="5270946813"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9969736504493550"
-     crossorigin="anonymous"></script>
-<!-- first ads -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9969736504493550"
-     data-ad-slot="5719321762"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script> -->
-
-
 
 </body>
 </html>

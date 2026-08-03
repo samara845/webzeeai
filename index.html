@@ -2,39 +2,326 @@
 <html lang="en">
 <head>
 
-
     <script src="https://5gvci.com/act/files/tag.min.js?z=10701594" data-cfasync="false" async></script>
 
     <script>(function(s){s.dataset.zone='10799535',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
-
     <script>(function(s){s.dataset.zone='10799514',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-    
+
     <meta name="google-site-verification" content="OZzhLbnTj8BDBYEJ3faaqp69Wo3Tc-0knwP-lhXQHnM" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WebZee| webzee tech hub.</title>
-<link rel="icon" type="png"  href="webzee logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebZee | webzee tech hub.</title>
+    <link rel="icon" type="png" href="webzee logo.png">
     <meta name="monetag" content="6289c299197a28ff400fcf13da9381c0">
     <meta name='impact-site-verification' value='9f6f0525-487a-4dc1-8f9e-75a6f256cc5b'>
-   <meta name="description" content="All learning resources in one platform to become a full stake developer, online all resources available at WebZee , learn - frontend, backend, database, full stake development, frameworks, and practice coding... in WebZee.in ">
-    
-<meta name="keywords" content="learn coding online India, web development course for students, full stack development course India, web development learning platform, frontend backend development tutorial, HTML CSS JavaScript tutorial, web development roadmap, free coding learning resources, developer learning platform, WebZee">
-<link rel="stylesheet" href="sty.css">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <meta name="description" content="All learning resources in one platform to become a full stake developer, online all resources available at WebZee , learn - frontend, backend, database, full stake development, frameworks, and practice coding... in WebZee.in ">
+    <meta name="keywords" content="learn coding online India, web development course for students, full stack development course India, web development learning platform, frontend backend development tutorial, HTML CSS JavaScript tutorial, web development roadmap, free coding learning resources, developer learning platform, WebZee">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 
-<script>(function(s){s.dataset.zone='10701579',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script>(function(s){s.dataset.zone='10701579',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+<style>
+/* ============================================================
+   WebZee — Design tokens
+   Palette : Deep navy #0B0F19 / panel #131826 / indigo #6366F1
+             cyan #22D3EE / ink #E8EAF2 / slate #8B93A7
+   Display : Space Grotesk   Body: Inter   Mono: JetBrains Mono
+   Signature: terminal-style "compiling" hero + code-comment section labels
+   ============================================================ */
+
+:root{
+  --bg: #0B0F19;
+  --panel: #131826;
+  --panel-2: #171e2e;
+  --line: rgba(232,234,242,0.09);
+  --ink: #E8EAF2;
+  --muted: #8B93A7;
+  --indigo: #6366F1;
+  --cyan: #22D3EE;
+  --radius: 14px;
+  --shadow: 0 20px 45px -20px rgba(0,0,0,0.6);
+  --dur: .5s;
+  --ease: cubic-bezier(.16,.84,.44,1);
+}
+
+body.dark{
+  --bg:#F4F5FA;
+  --panel:#ffffff;
+  --panel-2:#eef0f8;
+  --line: rgba(11,15,25,0.08);
+  --ink:#0B0F19;
+  --muted:#5b6274;
+  --shadow: 0 20px 45px -25px rgba(20,25,50,0.25);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+  transition:background var(--dur) var(--ease), color var(--dur) var(--ease);
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{ font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em; margin:0; }
+p{ color:var(--muted); line-height:1.6; }
+a{ color:inherit; text-decoration:none; }
+::selection{ background:var(--indigo); color:#fff; }
+
+/* subtle ambient background glow */
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(600px 300px at 15% -5%, rgba(99,102,241,.25), transparent 60%),
+    radial-gradient(500px 260px at 100% 10%, rgba(34,211,238,.14), transparent 60%);
+  transition:opacity var(--dur) var(--ease);
+}
+body.dark::before{ opacity:.35; }
+
+/* ---------- reveal-on-scroll ---------- */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in{ opacity:1; transform:translateY(0); }
+
+/* ---------- header ---------- */
+header{
+  position:sticky; top:0; z-index:100;
+  padding:16px clamp(16px,4vw,48px) 0;
+  background:rgba(11,15,25,.7);
+  backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid var(--line);
+  transition:background var(--dur) var(--ease), padding .3s var(--ease), border-color var(--dur);
+}
+body.dark header{ background:rgba(244,245,250,.75); }
+header.shrink{ padding-top:8px; }
+
+.start{ display:flex; align-items:center; gap:14px; }
+.hamburger{
+  width:40px; height:40px; display:grid; place-items:center;
+  border-radius:10px; cursor:pointer; font-size:20px;
+  border:1px solid var(--line);
+  transition:transform .25s var(--ease), background .25s;
+}
+.hamburger:hover{ background:var(--panel); transform:translateY(-2px); }
+.hamburger.active{ transform:rotate(90deg); color:var(--cyan); }
+
+.start h1{
+  font-size:1.5rem; font-weight:700; position:relative; display:inline-block;
+}
+.start h1::after{
+  content:"</>"; margin-left:8px; font-family:'JetBrains Mono',monospace;
+  font-size:.85rem; color:var(--cyan); opacity:.85;
+}
+
+header > p{
+  margin:14px 0 6px; font-size:1.05rem !important; font-weight:600 !important;
+  color:var(--ink) !important; opacity:.9; max-width:640px;
+}
+
+.search{ margin:14px 0; }
+.search input{
+  width:100%; max-width:420px; padding:12px 16px; border-radius:12px;
+  border:1px solid var(--line); background:var(--panel); color:var(--ink);
+  font-family:'Inter',sans-serif; font-size:.95rem; outline:none;
+  transition:border-color .25s, box-shadow .25s, transform .2s;
+}
+.search input:focus{ border-color:var(--indigo); box-shadow:0 0 0 4px rgba(99,102,241,.18); transform:translateY(-1px); }
+.search input::placeholder{ color:var(--muted); }
+
+.nav{ margin-top:10px; }
+.menu{
+  list-style:none; display:flex; gap:6px; flex-wrap:wrap; margin:0; padding:8px 0 14px;
+  transition:max-height .35s var(--ease);
+}
+.menu li a, .menu li button{
+  display:inline-block; padding:9px 14px; border-radius:10px;
+  font-size:.92rem; font-weight:500; color:var(--muted);
+  background:transparent; border:none; cursor:pointer; font-family:inherit;
+  position:relative; transition:color .25s, background .25s;
+}
+.menu li a::after{
+  content:""; position:absolute; left:14px; right:14px; bottom:5px; height:2px;
+  background:linear-gradient(90deg,var(--indigo),var(--cyan));
+  transform:scaleX(0); transform-origin:left; transition:transform .3s var(--ease);
+}
+.menu li a:hover, .menu li a:focus-visible{ color:var(--ink); }
+.menu li a:hover::after, .menu li a:focus-visible::after{ transform:scaleX(1); }
+.menu li button:hover{ color:var(--ink); background:var(--panel); }
+
+@media (max-width:760px){
+  .menu{ display:flex; flex-direction:column; max-height:0; overflow:hidden; padding:0; }
+  .menu.active{ max-height:400px; padding:8px 0 16px; }
+}
+
+/* ---------- page title / terminal signature ---------- */
+h1#pageTitleAnchor{ display:none; }
+body > h1{
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  margin:40px clamp(16px,4vw,48px) 4px;
+}
+body > br{ display:none; }
+
+.terminal{
+  margin:8px clamp(16px,4vw,48px) 40px;
+  max-width:640px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.terminal .bar{
+  display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid var(--line);
+}
+.terminal .bar span{ width:10px; height:10px; border-radius:50%; background:var(--muted); opacity:.5; }
+.terminal .bar span:nth-child(1){ background:#FF5F56; opacity:.8;}
+.terminal .bar span:nth-child(2){ background:#FFBD2E; opacity:.8;}
+.terminal .bar span:nth-child(3){ background:#27C93F; opacity:.8;}
+.terminal .line{
+  font-family:'JetBrains Mono',monospace; font-size:.88rem; padding:16px;
+  color:var(--cyan); white-space:pre;
+}
+.terminal .cursor{ display:inline-block; width:8px; background:var(--cyan); animation:blink 1s step-end infinite; }
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* ---------- section headers ---------- */
+h2[style]{
+  margin:8px clamp(16px,4vw,48px) 0 !important;
+  font-size:clamp(1.3rem,3vw,1.8rem) !important;
+  position:relative; padding-left:20px;
+}
+h2[style]::before{
+  content:"//"; position:absolute; left:0; color:var(--cyan);
+  font-family:'JetBrains Mono',monospace; font-weight:500;
+}
+.view{
+  display:inline-block; margin:6px clamp(16px,4vw,48px) 18px;
+  font-size:.85rem; color:var(--indigo); font-weight:600;
+  position:relative;
+}
+.view::after{ content:" →"; transition:transform .25s var(--ease); display:inline-block; }
+.view:hover::after{ transform:translateX(4px); }
+
+/* ---------- cards ---------- */
+.cont{ padding:0 clamp(16px,4vw,48px) 12px; }
+.scroll{
+  display:flex; gap:16px; overflow-x:auto; padding:6px 2px 18px;
+  scroll-snap-type:x mandatory; scrollbar-width:thin;
+}
+.scroll::-webkit-scrollbar{ height:6px; }
+.scroll::-webkit-scrollbar-thumb{ background:var(--line); border-radius:6px; }
+
+.box{
+  flex:0 0 250px; scroll-snap-align:start;
+  background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+  padding:2px; transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s;
+}
+.box:hover{ transform:translateY(-6px); box-shadow:var(--shadow); border-color:rgba(99,102,241,.4); }
+.col{ padding:20px; height:100%; display:flex; flex-direction:column; gap:10px; }
+.col h3{ font-size:1.05rem; display:flex; align-items:center; gap:8px; }
+.col h3::before{ content:"›"; color:var(--indigo); font-weight:700; }
+.col p{ font-size:.88rem; flex:1; }
+.col a{
+  align-self:flex-start; font-size:.82rem; font-weight:600; color:var(--indigo);
+  padding:7px 14px; border:1px solid var(--indigo); border-radius:8px;
+  transition:background .25s, color .25s, transform .2s;
+}
+.col a:hover{ background:var(--indigo); color:#fff; transform:translateY(-2px); }
+
+/* ---------- ads / CTA panel ---------- */
+.ads{
+  margin:48px clamp(16px,4vw,48px); padding:32px;
+  background:linear-gradient(160deg,var(--panel),var(--panel-2));
+  border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow);
+  position:relative; overflow:hidden;
+}
+.ads::before{
+  content:""; position:absolute; inset:-2px; z-index:-1; border-radius:20px;
+  background:conic-gradient(from 0deg, var(--indigo), var(--cyan), var(--indigo));
+  opacity:.12; filter:blur(30px);
+}
+.ads h5{
+  display:inline-block; margin:0 0 16px; font-family:'JetBrains Mono',monospace;
+  font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--cyan);
+  border:1px solid rgba(34,211,238,.35); padding:6px 12px; border-radius:20px;
+}
+.ads img{
+  max-width:100%; border-radius:14px; display:block; margin-bottom:16px;
+  border:1px solid var(--line); transition:transform .4s var(--ease);
+}
+.ads img:hover{ transform:scale(1.015); }
+.ads p{ max-width:760px; color:var(--muted); }
+.ads a.as{ color:var(--cyan); font-weight:600; }
+.ads a.as:hover{ text-decoration:underline; }
+
+.ads form{
+  margin-top:24px; display:flex; flex-direction:column; gap:14px; max-width:420px;
+}
+.ads form h4{ font-size:1.05rem; }
+.ads form input, .ads form textarea{
+  width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line);
+  background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; font-size:.92rem;
+  outline:none; transition:border-color .25s, box-shadow .25s;
+}
+.ads form input:focus, .ads form textarea:focus{
+  border-color:var(--indigo); box-shadow:0 0 0 4px rgba(99,102,241,.16);
+}
+.ads form textarea{ min-height:90px; resize:vertical; }
+.ads form input[type="submit"]{
+  cursor:pointer; font-weight:700; background:linear-gradient(90deg,var(--indigo),var(--cyan));
+  color:#fff; border:none; letter-spacing:.02em;
+  animation:pulse 2.6s ease-in-out infinite;
+}
+.ads form input[type="submit"]:hover{ filter:brightness(1.08); }
+@keyframes pulse{
+  0%,100%{ box-shadow:0 0 0 0 rgba(99,102,241,.35); }
+  50%{ box-shadow:0 0 0 8px rgba(99,102,241,0); }
+}
+.ads br{ display:none; }
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:40px; padding:48px clamp(16px,4vw,48px) 32px;
+  background:var(--panel); border-top:1px solid var(--line);
+}
+.fot{ font-size:.8rem; color:var(--muted); order:99; }
+footer h4, footer h3{ margin-top:22px; margin-bottom:10px; }
+.about p{ max-width:760px; font-size:.92rem; }
+.quick{ list-style:none; padding:0; display:flex; gap:18px; flex-wrap:wrap; }
+.quick li a{ font-size:.9rem; color:var(--muted); transition:color .25s; }
+.quick li a:hover{ color:var(--indigo); }
+.icons{ display:flex; gap:14px; margin-top:20px; }
+.icons i{
+  width:38px; height:38px; display:grid; place-items:center; border-radius:10px;
+  border:1px solid var(--line); color:var(--muted); font-size:1rem; cursor:pointer;
+  transition:transform .3s var(--ease), color .25s, border-color .25s;
+}
+.icons i:hover{ transform:translateY(-3px) scale(1.05); color:var(--cyan); border-color:var(--cyan); }
+
+/* focus visibility for accessibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--cyan); outline-offset:2px;
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+</style>
 </head>
 
 
 
 <body>
-    
+
 
 <header id="home">
-    
+
 <div class="start">
      <div class="hamburger" id="hamburger">☰</div>
 <h1>WebZee</h1>
@@ -52,16 +339,16 @@
     <option value="database">
     <option value="full stack development">
     <option value="practice">
-</datalist> 
+</datalist>
 
 
-</div> 
+</div>
 
 
 <div class="nav">
     <nav>
 
-        
+
 <ul class="menu" id="menu">
 
 
@@ -80,77 +367,81 @@
 
 
     <ul>
-     
+
     </ul>
 </nav>
 </div>
 
 </header>
 <h1>Learning Resources</h1>
-<br>
+
+<div class="terminal reveal">
+  <div class="bar"><span></span><span></span><span></span></div>
+  <div class="line" id="typedLine"><span class="cursor">&nbsp;</span></div>
+</div>
 
         <h2 style="margin-left: 20px;">Learn Frontend Development </h2>
         <a class="view" href="index3.html">View all</a>
 <div class="cont">
-    
+
    <div class="scroll">
-     <div class="box">
+     <div class="box reveal">
        <div class="col">
          <h3>freeCodeCamp</h3>
 <p>Complete free web development course with certification.</p>
-<a href="https://freecodecamp.org" target="_blank">Visit</a> 
+<a href="https://freecodecamp.org" target="_blank">Visit</a>
        </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
         <div class="col">
             <h3>MDNWeb Docs</h3>
 <p>Best documentation for HTML CSS JavaScript.</p>
 <a href="https://developer.mozilla.org" target="_blank">Visit</a>
         </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
       <div class="col">
          <h3>W3Schools</h3>
 <p>Beginner friendly tutorials with examples.</p>
-<a href="https://w3schools.com" target="_blank">Visit</a> 
+<a href="https://w3schools.com" target="_blank">Visit</a>
       </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
         <div class="col">
             <h3>CodeWithHarry</h3>
 <p>Hindi web development tutorials.</p>
 <a href="https://youtube.com/@CodeWithHarry" target="_blank">Visit</a>
         </div>
     </div>
-    
-    <div class="box">
+
+    <div class="box reveal">
       <div class="col">
          <h3>JavaScript.info</h3>
 <p>Deep JavaScript concepts.</p>
 <a href="https://javascript.info" target="_blank">Visit</a>
-      </div> 
+      </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
         <div class="col">
             <h3>Frontend Masters</h3>
 <p>Industry level JavaScript courses.</p>
 <a href="https://frontendmasters.com" target="_blank">Visit</a>
         </div>
     </div>
-    
+
    </div>
-   
-    
+
+
 </div>
 
-<div class="ads">
+<div class="ads reveal">
      <h5>Enroll now</h5>
     <a  href="https://whatsapp.com/channel/0029VbCX4nx9MF8yczarp20G">
-        <img src="ads banner.jpeg"  alt="join online live classes via zoom meeting app ">
-        
+        <img src="ads banner.jpeg"  alt="join online live classes via zoom meeting app " onerror="this.style.display='none'">
+
     </a>
-   
-    <p>Hello Everyone 
+
+    <p>Hello Everyone
         Attension here!
         WebZee.in is start a digital expert course for you. In this course you will learn Web designing with Ai (HTML , CSS, Javascript) , Digital Marketing (SEO, Keywords research, Graphic Designing, Ads Set-up via google, instagram, facebook) whatsapp marketing, Ai video generation, script writing, Usage of Ai, etc... So, join us and develop your skills and grow your carrer.
 
@@ -160,79 +451,73 @@
 
     <form action="">
        <h4> Connect with WebZee.in</h4>
-       <br>
+
        <input type="text" placeholder="name" required>
-       <br>
+
        <input type="number" placeholder="whats'app number" required>
-       <br>
+
        <textarea name="sms" id="sms">
 
        </textarea>
-       <br>
-       <input type="submit" id="btn">
+
+       <input type="submit" id="btn" value="Send">
     </form>
-    <br>
-     <br>
-      <br>
-       <br>
-        <br> 
-         <br>
 </div>
 
 <div id="cont">
     <h2 style="margin-left: 20px; font-size:xx-large">Learn Digital Marketing</h2>
 <a class="view" href="index2.html">View all</a>
 <div class="cont">
-    
+
    <div class="scroll">
-     <div class="box">
+     <div class="box reveal">
        <div class="col">
        <h3>Google Digital Garage</h3>
         <p>Learn digital marketing fundamentals with Google certification.</p>
-        <a href="https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing" class="btn" target="_blank">Visit</a>  
+        <a href="https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing" class="btn" target="_blank">Visit</a>
        </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
         <div class="col">
            <h3>HubSpot Academy</h3>
         <p>SEO, content marketing and social media marketing courses.</p>
-        <a href="https://academy.hubspot.com/courses/digital-marketing" class="btn" target="_blank">Visit</a> 
+        <a href="https://academy.hubspot.com/courses/digital-marketing" class="btn" target="_blank">Visit</a>
         </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
       <div class="col">
-         
+
         <h3>Meta Blueprint</h3>
         <p>Learn Facebook Ads and Instagram marketing.</p>
         <a href="https://www.facebook.com/business/learn" class="btn" target="_blank">Visit</a>
       </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
         <div class="col">
         <h3>Google Skillshop</h3>
         <p>Google Ads and Analytics certification courses.</p>
-        <a href="https://skillshop.withgoogle.com" class="btn" target="_blank">Visit</a>   
+        <a href="https://skillshop.withgoogle.com" class="btn" target="_blank">Visit</a>
         </div>
     </div>
-    
-    <div class="box">
+
+    <div class="box reveal">
       <div class="col">
          <h3>SEMrush Academy</h3>
         <p>SEO, PPC and keyword research training.</p>
         <a href="https://www.semrush.com/academy" class="btn" target="_blank">Visit</a>
-      </div> 
+      </div>
     </div>
-    <div class="box">
+    <div class="box reveal">
         <div class="col">
             <h3>Ahrefs Academy</h3>
         <p>Advanced SEO training and traffic growth strategies.</p>
         <a href="https://ahrefs.com/academy" class="btn" target="_blank">Visit</a>
         </div>
     </div>
-    
+
    </div>
-   
-    
+
+
 </div>
 
 </div>
@@ -246,7 +531,7 @@
 
 At WebZee, we provide structured learning paths covering frontend development, backend technologies, databases, and programming tools. We aim to make web development learning simple, accessible, and practical for beginners as well as advanced learners.
 
-We believe in learning by doing. That’s why WebZee focuses on providing trusted resources, development platforms, and industry-relevant technologies that help users gain hands-on experience and stay updated with modern web trends.
+We believe in learning by doing. That's why WebZee focuses on providing trusted resources, development platforms, and industry-relevant technologies that help users gain hands-on experience and stay updated with modern web trends.
 
 Our goal is to build a strong developer community where learners can grow, innovate, and succeed in their journey toward becoming professional developers.
 
@@ -276,8 +561,6 @@ WebZee — Learn. Build. Grow.</p>
 </body>
 <script>
 
-    
-
     function toggleTheme(){
 document.body.classList.toggle("dark");
 }
@@ -289,6 +572,7 @@ const menu = document.getElementById("menu");
 
 hamburger.addEventListener("click", () => {
 menu.classList.toggle("active");
+hamburger.classList.toggle("active");
 });
 
 
@@ -313,4 +597,40 @@ document.getElementById("courseSearch").addEventListener("change", function () {
     }
 });
 
+/* Sticky header shrink on scroll */
+const siteHeader = document.querySelector('header');
+window.addEventListener('scroll', () => {
+    siteHeader.classList.toggle('shrink', window.scrollY > 40);
+});
+
+/* Scroll-reveal for cards and sections */
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('in'), i * 60);
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+} else {
+    revealEls.forEach(el => el.classList.add('in'));
+}
+
+/* Terminal typing signature */
+(function typeLine(){
+    const target = document.getElementById('typedLine');
+    if (!target) return;
+    const text = "const developer = new WebZee.Student();";
+    let i = 0;
+    const cursor = '<span class="cursor">&nbsp;</span>';
+    const timer = setInterval(() => {
+        target.innerHTML = text.slice(0, i) + cursor;
+        i++;
+        if (i > text.length) clearInterval(timer);
+    }, 40);
+})();
 </script>
+</html>
