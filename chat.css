@@ -1,0 +1,26 @@
+body{
+font-family:Arial;
+background:#f0f0f0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+.chat{
+width:420px;
+background:white;
+border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+padding:15px;
+}
+#messages{
+height:350px;
+overflow-y:auto;
+border:1px solid #ddd;
+padding:10px;
+margin-bottom:10px;
+}
+.user{text-align:right;color:blue;margin:5px}
+.bot{color:green;margin:5px}
+input{width:75%;padding:8px}
+button{padding:8px;background:green;color:white;border:none}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WebZee E-Book | Freelancing, Marketing, Web Dev & AI</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--text:#14182b;--muted:#5b6380;--brand:#4f46e5;--brand2:#06b6d4;--border:#e3e7f2;--shadow:0 8px 24px rgba(30,40,90,.08);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1020;--card:#161a30;--text:#eef0fa;--muted:#9aa3c7;--border:#262c4d;--shadow:0 8px 24px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1020;--card:#161a30;--text:#eef0fa;--muted:#9aa3c7;--border:#262c4d;--shadow:0 8px 24px rgba(0,0,0,.4);color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,Roboto,Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 5%;gap:12px}
+.logo{font-weight:800;font-size:1.35rem;background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;gap:16px;align-items:center;font-size:.95rem}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:600;padding:12px 22px;border-radius:10px;color:#fff;background:linear-gradient(90deg,var(--brand),var(--brand2));box-shadow:var(--shadow)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border);box-shadow:none;padding:8px 12px}
+section{padding:56px 5%;max-width:1100px;margin:auto}
+.hero{text-align:center;padding-top:64px}
+.tag{display:inline-block;background:var(--card);border:1px solid var(--border);padding:5px 14px;border-radius:99px;font-size:.85rem;color:var(--muted)}
+h1{font-size:clamp(1.9rem,5vw,3.2rem);line-height:1.2;margin:16px 0}
+h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:640px;margin:0 auto 24px}
+h2{font-size:1.6rem;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.cover{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 65px;
+}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.card .ic{font-size:1.8rem}
+.card h3{margin:8px 0 6px;font-size:1.1rem}
+.card p{color:var(--muted);font-size:.93rem}
+.buy{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:780px){.buy{grid-template-columns:1fr}nav a.hide{display:none}}
+.price{font-size:2.4rem;font-weight:800}
+.price s{font-size:1.1rem;color:var(--muted);font-weight:400}
+ul.list{list-style:none;padding:0;margin:14px 0;text-align:left}
+ul.list li{padding:4px 0}
+ul.list li::before{content:"✔ ";color:var(--brand2);font-weight:700}
+.qrbox{text-align:center}
+#qr{display:inline-block;background:#fff;padding:12px;border-radius:12px;margin:12px 0;min-height:184px;min-width:184px}
+input{width:100%;padding:12px;margin:6px 0 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit}
+label{font-size:.88rem;color:var(--muted)}
+.steps{counter-reset:s}
+.steps .card{position:relative;padding-top:30px;margin-top:10px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:20px;width:32px;height:32px;border-radius:50%;background:linear-gradient(90deg,var(--brand),var(--brand2));color:#fff;display:grid;place-items:center;font-weight:700}
+.note{font-size:.82rem;color:var(--muted)}
+footer{text-align:center;padding:32px 5%;color:var(--muted);border-top:1px solid var(--border);font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+  <a href="#home" class="logo">WebZee</a>
+  <nav>
+    <a class="hide" href="#learn">Kya Seekhenge</a>
+    <a class="hide" href="#how">Kaise Milega</a>
+    <a href="#buy" class="btn" style="padding:8px 16px">Buy Now</a>
+    <!-- <button class="btn ghost" id="theme" aria-label="Theme switch">🌓</button> -->
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <span class="tag">📘 WebZee E-Book • By Samar</span>
+  <h1>Freelancing, Marketing, Web Dev & AI — <span>Sab Ek E-Book Me</span></h1>
+  <p>Beginner se paid freelancer banne tak ka practical roadmap. QR scan karke payment karein aur e-book aapke Email aur WhatsApp par paayein.</p>
+  <a href="#buy" class="btn"> Buy now E-Book  →</a>
+</section>
+
+<section id="learn">
+  <h2>Is E-Book Me Aap Kya Seekhenge?</h2>
+  <p class="sub">Practical, step-by-step aur Hinglish me.</p>
+  <div class="grid">
+    <div class="card"><div class="ic">💼</div><h3>Freelancing</h3><p>Profile banana, client dhundhna, pricing, proposal aur payment lena.</p></div>
+    <div class="card"><div class="ic">📈</div><h3>Digital & Performance Marketing</h3><p>SEO, keyword research, Google/Instagram/Facebook Ads set-up aur tracking.</p></div>
+    <div class="card"><div class="ic">💻</div><h3>Web Development</h3><p>HTML, CSS, JavaScript basics aur AI ke saath fast website building.</p></div>
+    <div class="card"><div class="ic">🤖</div><h3>AI Ka Use Kahin Bhi</h3><p>Content, design, video, coding aur kaam automate karne ke AI tools.</p></div>
+  </div>
+</section>
+<section id="cover">
+<div class="cover">
+    <img src="AI Earnings Guide Book Mockup.png" alt="cover of Earn with Ai" width="30%">
+  <div class="about">
+    <p><h3><b>Is Book Ko Kaise Use Karein</b></h3><br>
+<b>> read once. apply daily. earn steadily.</b> <br> <br>
+Ye guide un logon ke liye hai jo theory nahi, practical results chahte hain. Har page par ek topic hai:
+chhoti explanation, step-by-step method, copy-paste prompt aur kamai ka clear idea. Prompt use karne
+se pehle [square brackets] ki jagah apni details bharo. Prompts English mein diye gaye hain kyunki AI
+tools English prompts par best results dete hain. Aap chahein to unhe Hinglish mein bhi try kar sakte
+ho.
+1
+Ek raasta chuno
+Table of contents dekho aur EK income skill chuno: writing, design, marketing, ads, websites ya
+freelancing. Focus variety se behtar hai.
+2
+Foundation pakka karo
+Pehle Chapter 1 aur 2 padho. AI, internet aur prompting samajhne se baaki sab chapters better
+kaam karte hain.
+3
+Roz practice karo
+Roz ek page karo. Prompt chalao, output edit karo aur best results ko portfolio samples ki tarah save
+karo.
+4
+Apni skill becho
+Chapter 8 se portfolio banao, clients dhundo, price set karo aur professionally deliver karo.
+5
+Track karo aur sudharo
+Likho kya try kiya, kya chala aur clients ne kya kaha. Har hafte ek cheez improve karo.
+! IMPORTANT NOTE
+AI skills se income aapki mehnat, quality, niche aur market par depend karti hai. Ye book methods deti
+hai, guarantee nahi. AI output hamesha verify karo, copyright aur platform rules respect karo, client data
+protect karo aur legal, tax aur financial matters mein professional se salah lo.</p>
+  </div>
+</div>
+<br>
+<br>
+  <center><p>Cover of <br><h3><i>"How to use Ai For Earning"</i></h3></p></center>
+  
+</section>
+
+<section id="buy">
+  <h2>E-Book Order Karein</h2>
+  <p class="sub">Sirf 3 minute me payment aur access request.</p>
+  <div class="buy">
+    <div class="card qrbox">
+      <div class="price">₹99 <s>₹299</s></div>
+      <ul class="list">
+        <li>Complete e-book (PDF)</li>
+        <li>4 skills: Freelancing, Marketing, Web Dev, AI</li>
+        <li>Email + WhatsApp par delivery</li>
+        <li>Lifetime access</li>
+      </ul>
+      <p><b>UPI QR Scan Karein</b></p>
+      <div id="qr"><img src="data:image/png;base64,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" alt="WebZee UPI QR" style="width:200px;height:200px;display:block"></div>
+      <p class="note">PhonePe / GPay / Paytm se scan karein.<br>Payee: <b>WebZee</b></p>
+    </div>
+    <div class="card">
+      <h3>Payment ke baad details bharein</h3>
+      <p class="note" style="margin-bottom:10px">Verify hote hi e-book bhej di jayegi.</p>
+      <label>Aapka Naam</label><input id="name" placeholder="Full name">
+      <label>Email</label><input id="email" type="email" placeholder="you@example.com">
+      <label>WhatsApp Number</label><input id="wa" type="tel" placeholder="98XXXXXXXX">
+      <label>UPI Transaction ID (UTR)</label><input id="utr" placeholder="12 digit transaction ID">
+      <button class="btn" style="width:100%" id="submit">Payment Submit Karein ✅</button>
+      <p class="note" id="msg" style="margin-top:10px"></p>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>E-Book Kaise Milegi?</h2>
+  <p class="sub">Simple 3 steps.</p>
+  <div class="grid steps">
+    <div class="card"><h3>QR Scan Karein</h3><p>QR ko kisi bhi UPI app se scan karke ₹199 pay karein.</p></div>
+    <div class="card"><h3>Details Submit Karein</h3><p>Naam, email, WhatsApp aur transaction ID bharein.</p></div>
+    <div class="card"><h3>Access Paayein</h3><p>Verification ke baad kuch der me e-book Email aur WhatsApp par aa jayegi.</p></div>
+  </div>
+</section>
+
+<footer>
+  © WebZee.in All Rights Reserved. 2026 • Learn. Build. Grow.<br>
+  Support: <a href="https://wa.me/918709655157" style="color:var(--brand)">WhatsApp 8709655157</a>
+</footer>
+
+<script>
+var AMOUNT = 199;
+var OWNER_WA = "918709655157";
+document.getElementById("theme").onclick = function(){
+  var r = document.documentElement, t = r.getAttribute("data-theme");
+  var dark = t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  r.setAttribute("data-theme", dark ? "light" : "dark");
+};
+document.getElementById("submit").onclick = function(){
+  var n = document.getElementById("name").value.trim(),
+      e = document.getElementById("email").value.trim(),
+      w = document.getElementById("wa").value.trim(),
+      u = document.getElementById("utr").value.trim(),
+      m = document.getElementById("msg");
+  if(!n || !/^\S+@\S+\.\S+$/.test(e) || w.replace(/\D/g,"").length < 10 || u.length < 8){
+    m.textContent = "⚠️ Kripya sabhi details sahi se bharein."; return;
+  }
+  var text = "Hello WebZee! Maine E-Book kharidi hai.\nNaam: " + n + "\nEmail: " + e + "\nWhatsApp: " + w + "\nUTR: " + u + "\nAmount: ₹" + AMOUNT;
+  m.textContent = "✅ WhatsApp khul raha hai — message send karein, verify hote hi e-book mil jayegi.";
+  window.open("https://wa.me/" + OWNER_WA + "?text=" + encodeURIComponent(text), "_blank");
+};
+</script>
+</body>
+</html>

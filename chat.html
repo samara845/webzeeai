@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Smart WebDev Chatbot</title>
+<link rel="stylesheet" href="chat.css">
+<style>
+
+</style>
+
+</head>
+
+<body>
+
+<div class="chat">
+<h3>Smart WebDev Chatbot 🤖</h3>
+<div id="messages"></div>
+<input id="input" placeholder="Ask web development question...">
+<button onclick="send()">Send</button>
+</div>
+
+<script>
+
+/* ===============================
+   CORE WEB DEV KNOWLEDGE (REAL ANSWERS)
+=============================== */
+
+const concepts = {
+
+html:{
+keywords:["html","hypertext markup"],
+answer:"HTML (HyperText Markup Language) webpage ka structure banata hai. Isse headings, paragraphs, images, links aur forms create kiye jate hain."
+},
+
+css:{
+keywords:["css","stylesheet","styling"],
+answer:"CSS (Cascading Style Sheets) webpage ka design aur layout control karta hai jaise color, font, spacing aur responsive design."
+},
+
+javascript:{
+keywords:["javascript","js"],
+answer:"JavaScript webpage ko dynamic aur interactive banata hai jaise button click events, animations aur API calls."
+},
+
+dom:{
+keywords:["dom"],
+answer:"DOM (Document Object Model) webpage ka programming interface hai jisse JavaScript HTML elements ko access aur modify karta hai."
+},
+
+flexbox:{
+keywords:["flexbox"],
+answer:"CSS Flexbox ek layout system hai jo elements ko row ya column me align aur distribute karne ke liye use hota hai."
+},
+
+grid:{
+keywords:["grid"],
+answer:"CSS Grid 2D layout system hai jo rows aur columns ke through complex layout banane me help karta hai."
+},
+
+responsive:{
+keywords:["responsive","media query"],
+answer:"Responsive design website ko mobile, tablet aur desktop par properly adjust karta hai using media queries."
+},
+
+react:{
+keywords:["react"],
+answer:"React ek JavaScript library hai jo reusable UI components aur fast rendering ke liye use hoti hai."
+},
+
+hooks:{
+keywords:["react hook","usestate","useeffect","hook"],
+answer:"React Hooks functional components me state aur lifecycle features use karne ke liye use hote hain."
+},
+
+node:{
+keywords:["node","nodejs"],
+answer:"Node.js JavaScript runtime hai jo server side backend development ke liye use hota hai."
+},
+
+api:{
+keywords:["api"],
+answer:"API (Application Programming Interface) different software systems ko communicate karne deta hai."
+},
+
+rest:{
+keywords:["rest api"],
+answer:"REST API HTTP methods (GET, POST, PUT, DELETE) use karke client-server communication karta hai."
+},
+
+mongodb:{
+keywords:["mongodb"],
+answer:"MongoDB ek NoSQL database hai jo data ko JSON-like format me store karta hai."
+},
+
+sql:{
+keywords:["sql"],
+answer:"SQL database query language hai jisse data insert, update aur retrieve kiya jata hai."
+},
+
+git:{
+keywords:["git"],
+answer:"Git version control system hai jo code changes track karta hai."
+},
+
+github:{
+keywords:["github"],
+answer:"GitHub online platform hai jaha Git repositories store aur collaborate ki jati hain."
+},
+
+seo:{
+keywords:["seo"],
+answer:"SEO website ko search engine me rank karne ki process hai."
+},
+
+hosting:{
+keywords:["hosting"],
+answer:"Hosting website files ko internet par store karta hai jisse website online accessible hoti hai."
+},
+
+domain:{
+keywords:["domain"],
+answer:"Domain website ka unique address hota hai jaise google.com."
+},
+
+jwt:{
+keywords:["jwt","authentication token"],
+answer:"JWT authentication ke liye secure token format hai."
+},
+
+cookie:{
+keywords:["cookie"],
+answer:"Cookies browser me stored small data hota hai jo user session track karta hai."
+},
+
+session:{
+keywords:["session"],
+answer:"Session server side user data store karta hai login state maintain karne ke liye."
+},
+
+cors:{
+keywords:["cors"],
+answer:"CORS browser security mechanism hai jo cross origin requests control karta hai."
+},
+
+websocket:{
+keywords:["websocket"],
+answer:"WebSocket real-time communication protocol hai jo client aur server ke beech live connection banata hai."
+},
+
+closure:{
+keywords:["closure"],
+answer:"JavaScript closure tab hota hai jab function apne outer scope variables access kare."
+},
+
+promise:{
+keywords:["promise"],
+answer:"Promise asynchronous operations handle karta hai."
+}
+
+};
+
+
+/* ===============================
+   QUESTION VARIATIONS (500+)
+=============================== */
+
+const patterns=[
+"what is {t}",
+"{t} kya hai",
+"explain {t}",
+"{t} ka use kya hai",
+"why use {t}",
+"how to use {t}",
+"{t} tutorial",
+"{t} basics",
+"{t} definition",
+"how {t} works",
+"{t} example",
+"{t} kaise sikhe",
+"{t} guide",
+"importance of {t}",
+"benefits of {t}",
+"advantages of {t}",
+"real world use of {t}",
+"{t} interview question",
+"{t} in web development",
+"{t} kaise implement kare"
+];
+
+/* generate dataset */
+let dataset=[];
+
+Object.keys(concepts).forEach(key=>{
+patterns.forEach(p=>{
+dataset.push({
+question:p.replace("{t}",key),
+intent:key
+});
+});
+});
+
+console.log("Total question variations:",dataset.length);
+
+
+/* ===============================
+   INTENT DETECTION (SMART MATCH)
+=============================== */
+
+function detectIntent(input){
+input=input.toLowerCase();
+
+for(let key in concepts){
+for(let word of concepts[key].keywords){
+if(input.includes(word)) return key;
+}
+}
+return null;
+}
+
+function findAnswer(input){
+let intent=detectIntent(input);
+if(intent) return concepts[intent].answer;
+
+return "Mujhe samajh nahi aaya 😅 — web development related question pucho.";
+}
+
+
+/* ================= CHAT ================= */
+
+function send(){
+let input=document.getElementById("input");
+let messages=document.getElementById("messages");
+
+if(!input.value.trim()) return;
+
+messages.innerHTML+=`<div class="user">${input.value}</div>`;
+
+let reply=findAnswer(input.value);
+
+setTimeout(()=>{
+messages.innerHTML+=`<div class="bot">${reply}</div>`;
+messages.scrollTop=messages.scrollHeight;
+},300);
+
+input.value="";
+}
+
+</script>
+
+</body>
+</html>

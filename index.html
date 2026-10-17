@@ -12,10 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebZee | webzee tech hub By Samar....</title>
-    <link rel="icon" type="png" href="webzee logo.png">
+    <link rel="icon" type="image/png" href="webzee%20logo.png">
     <!-- <meta name="monetag" content="6289c299197a28ff400fcf13da9381c0"> -->
     <!-- <meta name='impact-site-verification' value='9f6f0525-487a-4dc1-8f9e-75a6f256cc5b'> -->
-    <meta name="description" content="All learning resources in one platform to become a full stake developer, online all resources available at WebZee , learn - frontend, backend, database, full stake development, frameworks, and practice coding... in WebZee.in and also learn digital marketing with Ai By Samar....   Follow the instagram page @developer.samar  ">
+    <meta name="description" content="All learning resources in one platform to become a full stack developer, online all resources available at WebZee , learn - frontend, backend, database, full stack development, frameworks, and practice coding... in WebZee.in and also learn digital marketing with Ai By Samar....   Follow the instagram page @developer.samar  ">
     <meta name="keywords" content="learn coding online India, web development course for students, full stack development course India, web development learning platform, frontend backend development tutorial, HTML CSS JavaScript tutorial, web development roadmap, free coding learning resources, developer learning platform, WebZee, Skills with samar, join webzee online live classes host by Samar.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
@@ -312,18 +312,81 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
 }
+
+/* ============ v2 patch: fixes + motion (UI unchanged) ============ */
+:root{ --cyan-ink:#22D3EE; }
+body.dark{ --cyan-ink:#0E7490; }                 /* .dark = light theme (original naming kept) */
+.terminal .body, .ads h5, .ads a.as, h2[style]::before, .start h1::after{ color:var(--cyan-ink); }
+.start h1::after, h2[style]::before{ color:var(--cyan-ink); }
+
+/* reveal bug fix: .box transition used to override the reveal fade */
+.js .reveal{ opacity:0; transform:translateY(28px); }
+.js .reveal.in{ opacity:1; transform:none; animation:rise .7s var(--ease) backwards; animation-delay:calc(var(--i,0)*70ms); }
+.js .box.reveal.in:hover{ transform:translateY(-6px); }
+@keyframes rise{ from{ opacity:0; transform:translateY(28px); } }
+
+/* one page-load sequence: header settles in, tagline collapses on scroll */
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(14px); } }
+.start,header > p,.search,.nav{ animation:fadeUp .6s var(--ease) backwards; }
+header > p{ animation-delay:.08s; max-height:80px; overflow:hidden; transition:max-height .35s var(--ease),opacity .25s,margin .35s var(--ease); }
+.search{ animation-delay:.16s; } .nav{ animation-delay:.24s; }
+header.shrink > p{ max-height:0; opacity:0; margin:0; }
+body::before{ animation:drift 20s ease-in-out infinite alternate; }
+@keyframes drift{ to{ transform:translate3d(-2%,3%,0) scale(1.08); } }
+@property --angle{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+.ads::before{ background:conic-gradient(from var(--angle),var(--indigo),var(--cyan),var(--indigo)); animation:spin 9s linear infinite; }
+@keyframes spin{ to{ --angle:360deg; } }
+html.theme-anim *{ transition:background-color .5s,color .5s,border-color .5s !important; }
+[hidden]{ display:none !important; }
+
+/* nav: real button, only on mobile */
+button.hamburger{ background:none; color:inherit; font:inherit; font-size:20px; padding:0; }
+@media (min-width:761px){ .hamburger{ display:none; } }
+.menu.active li{ animation:fadeUp .35s var(--ease) backwards; }
+
+/* page title now h2 (one h1 per page) */
+.page-title{ font-size:clamp(1.8rem,4vw,2.6rem); margin:40px clamp(16px,4vw,48px) 4px; }
+[id]{ scroll-margin-top:110px; }
+
+/* terminal: 3-line compile sequence */
+.terminal .body{ padding:16px; font-family:'JetBrains Mono',monospace; font-size:clamp(.72rem,3.3vw,.88rem); }
+.terminal .ln{ min-height:1.7em; white-space:pre-wrap; }
+.terminal .ln i{ font-style:normal; color:var(--muted); margin-right:6px; }
+.terminal .ln.ok{ color:#27C93F; }
+
+/* images */
+.ads img.md{ width:min(100%,420px); } .ads img.sm{ width:min(100%,260px); }
+.empty{ margin:8px clamp(16px,4vw,48px) 24px; }
+.empty a{ color:var(--indigo); font-weight:600; }
+
+/* progress, back-to-top, toast */
+.progress{ position:fixed; top:0; left:0; width:100%; height:3px; z-index:200; transform:scaleX(0); transform-origin:left;
+  background:linear-gradient(90deg,var(--indigo),var(--cyan)); }
+.to-top{ position:fixed; right:18px; bottom:18px; width:44px; height:44px; border-radius:12px; z-index:150; cursor:pointer;
+  display:grid; place-items:center; background:var(--panel); color:var(--ink); border:1px solid var(--line); box-shadow:var(--shadow);
+  opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s,transform .3s var(--ease); }
+.to-top.show{ opacity:1; transform:none; pointer-events:auto; }
+.to-top:hover{ border-color:var(--cyan); color:var(--cyan-ink); }
+.toast{ position:fixed; left:50%; bottom:24px; z-index:300; padding:12px 18px; border-radius:12px; background:var(--panel); color:var(--ink);
+  border:1px solid var(--indigo); box-shadow:var(--shadow); transform:translate(-50%,20px); opacity:0; pointer-events:none;
+  transition:opacity .3s,transform .35s var(--ease); }
+.toast.show{ opacity:1; transform:translate(-50%,0); }
 </style>
 </head>
 
 
 
 <body>
+<script>try{localStorage.getItem('wz-theme')==='light'&&document.body.classList.add('dark')}catch(e){}document.documentElement.classList.add('js')</script>
+<div class="progress" id="progress"></div>
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<div class="toast" id="toast" role="status"></div>
 
 
 <header id="home">
 
 <div class="start">
-     <div class="hamburger" id="hamburger">☰</div>
+     <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="menu" aria-expanded="false">☰</button>
 <h1>WebZee</h1>
 </div>
 <p style="font-size: larger; font-weight:bold; ">All Resources to Become Full Stack Developer | Online All resources available </p>
@@ -358,6 +421,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    <li><a href="index2.html">Learn Digital marketing</a></li>
    <li><a href="index3.html">Learn Web Dev</a></li>
    <!-- <li><a href="#ask">Ask AI</a></li> -->
+    <li><a href="#cover">E-book</a></li>
    <li><a href="#ap">Get Development paid course</a></li>
    <li><button onclick="toggleTheme()">Theme Switch</button></li>
 </ul>
@@ -366,18 +430,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 
 
-    <ul>
-
-    </ul>
-</nav>
+    </nav>
 </div>
 
 </header>
-<h1>Learning Resources</h1>
+<h2 class="page-title">Learning Resources</h2>
 
 <div class="terminal reveal">
   <div class="bar"><span></span><span></span><span></span></div>
-  <div class="line" id="typedLine"><span class="cursor">&nbsp;</span></div>
+  <div class="body" id="termBody">
+    <div class="ln"><i>$</i><span data-t="webzee start">webzee start</span></div>
+    <div class="ln"><i>&gt;</i><span data-t="const developer = new WebZee.Student();">const developer = new WebZee.Student();</span></div>
+    <div class="ln ok"><i>✔</i><span data-t="compiled. Learn. Build. Grow.">compiled. Learn. Build. Grow.</span></div>
+  </div>
 </div>
 
         <h2 style="margin-left: 20px;">Learn Frontend Development </h2>
@@ -389,28 +454,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
        <div class="col">
          <h3>freeCodeCamp</h3>
 <p>Complete free web development course with certification.</p>
-<a href="https://freecodecamp.org" target="_blank">Visit</a>
+<a href="https://freecodecamp.org" target="_blank" rel="noopener noreferrer">Visit</a>
        </div>
     </div>
     <div class="box reveal">
         <div class="col">
             <h3>MDNWeb Docs</h3>
 <p>Best documentation for HTML CSS JavaScript.</p>
-<a href="https://developer.mozilla.org" target="_blank">Visit</a>
+<a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">Visit</a>
         </div>
     </div>
     <div class="box reveal">
       <div class="col">
          <h3>W3Schools</h3>
 <p>Beginner friendly tutorials with examples.</p>
-<a href="https://w3schools.com" target="_blank">Visit</a>
+<a href="https://w3schools.com" target="_blank" rel="noopener noreferrer">Visit</a>
       </div>
     </div>
     <div class="box reveal">
         <div class="col">
             <h3>CodeWithHarry</h3>
 <p>Hindi web development tutorials.</p>
-<a href="https://youtube.com/@CodeWithHarry" target="_blank">Visit</a>
+<a href="https://youtube.com/@CodeWithHarry" target="_blank" rel="noopener noreferrer">Visit</a>
         </div>
     </div>
 
@@ -418,14 +483,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="col">
          <h3>JavaScript.info</h3>
 <p>Deep JavaScript concepts.</p>
-<a href="https://javascript.info" target="_blank">Visit</a>
+<a href="https://javascript.info" target="_blank" rel="noopener noreferrer">Visit</a>
       </div>
     </div>
     <div class="box reveal">
         <div class="col">
             <h3>Frontend Masters</h3>
 <p>Industry level JavaScript courses.</p>
-<a href="https://frontendmasters.com" target="_blank">Visit</a>
+<a href="https://frontendmasters.com" target="_blank" rel="noopener noreferrer">Visit</a>
         </div>
     </div>
 
@@ -442,36 +507,43 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </a>
 
     <p>Hello Everyone
-        Attension here!
-        WebZee.in is start a digital expert course for you. In this course you will learn Web designing with Ai (HTML , CSS, Javascript) , Digital Marketing (SEO, Keywords research, Graphic Designing, Ads Set-up via google, instagram, facebook) whatsapp marketing, Ai video generation, script writing, Usage of Ai, etc... So, join us and develop your skills and grow your carrer.
+        Attention!
+        WebZee.in is start a digital expert course for you. In this course you will learn Web designing with Ai (HTML , CSS, Javascript) , Digital Marketing (SEO, Keywords research, Graphic Designing, Ads Set-up via google, instagram, facebook) whatsapp marketing, Ai video generation, script writing, Usage of Ai, etc... So, join us and develop your skills and grow your career.
 
-        Conatct no:- 8709655157
+        Contact no: 8709655157
         <a class="as" href="https://whatsapp.com/channel/0029VbCX4nx9MF8yczarp20G">Click the link and join now.</a>
     </p>
 
-    <form action="">
+    <form id="contactForm">
        <h4> Connect with WebZee.in</h4>
-
-       <input type="text" placeholder="name" required>
-
-       <input type="number" placeholder="whats'app number" required>
-
-       <textarea name="sms" id="sms">
-
-       </textarea>
-
-       <input type="submit" id="btn" value="Send">
+       <input type="text" name="name" placeholder="Name" autocomplete="name" required>
+       <input type="tel" name="phone" placeholder="WhatsApp number" autocomplete="tel" pattern="[0-9+ ]{10,15}" required>
+       <textarea name="msg" placeholder="Your message"></textarea>
+       <input type="submit" id="btn" value="Send on WhatsApp">
     </form>
 </div>
 
 <div class="ads reveal" id="ap">
      <h5>New Placement Batch</h5>
     <a href="https://www.apnacollege.in/start" target="_blank" rel="noopener noreferrer" aria-label="Join SigmaX New Placement Batch on Apna College">
-        <img src="apna Collage.jpg" width="40%" alt="SigmaX New Placement Batch - DSA + AI Full Stack Web Development + Aptitude, Java DSA Course by Apna College" onerror="this.style.display='none'">
+        <img src="apna Collage.jpg" class="md" loading="lazy" alt="SigmaX New Placement Batch - DSA + AI Full Stack Web Development + Aptitude, Java DSA Course by Apna College Available on webzee.in on google." onerror="this.style.display='none'">
     </a>
 
     <p>SigmaX Placement Batch by Apna College is live! Cover <strong>DSA + AI Full Stack Web Development + Aptitude</strong> along with a dedicated <strong>Java DSA Course</strong> to crack your dream placement in Just <b> <mark> 699/-</mark></b> only.
         <a class="as" href="https://wa.me/918709655157?text=Hello%20I%20want%20to%20know%20more" target="_blank" rel="noopener noreferrer">Click here to Contact now.</a>
+        
+    </p>
+</div>
+
+
+<div class="ads reveal" id="cover">
+  <h5>E-book for learn AI for making money</h5>
+    <a href="ebook.html" target="_blank" rel="noopener noreferrer" aria-label="Get the E-book for making money using your phone by Webzee.in launched by Samar.">
+        <img src="AI Earnings Guide Book Mockup.png" class="sm" loading="lazy" alt="webzee launched the E-book for students to learn AI for making money. This E-book Available on webzee.in on google." onerror="this.style.display='none'">
+    </a>
+
+    <p>Webzee launched the E-book for students to learn AI for making money. This E-book is live! on webzee.in Cover <strong>How use AI in Everything</strong> along with a dedicated <strong>Freelancing</strong> to Earn money. <b> <mark> 99/-</mark></b> only.
+        <a class="as" href="ebook.html" target="_blank" rel="noopener noreferrer">Get it now</a>
         
     </p>
 </div>
@@ -486,14 +558,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
        <div class="col">
        <h3>Google Digital Garage</h3>
         <p>Learn digital marketing fundamentals with Google certification.</p>
-        <a href="https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing" class="btn" target="_blank">Visit</a>
+        <a href="https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing" class="btn" target="_blank" rel="noopener noreferrer">Visit</a>
        </div>
     </div>
     <div class="box reveal">
         <div class="col">
            <h3>HubSpot Academy</h3>
         <p>SEO, content marketing and social media marketing courses.</p>
-        <a href="https://academy.hubspot.com/courses/digital-marketing" class="btn" target="_blank">Visit</a>
+        <a href="https://academy.hubspot.com/courses/digital-marketing" class="btn" target="_blank" rel="noopener noreferrer">Visit</a>
         </div>
     </div>
     <div class="box reveal">
@@ -501,14 +573,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
         <h3>Meta Blueprint</h3>
         <p>Learn Facebook Ads and Instagram marketing.</p>
-        <a href="https://www.facebook.com/business/learn" class="btn" target="_blank">Visit</a>
+        <a href="https://www.facebook.com/business/learn" class="btn" target="_blank" rel="noopener noreferrer">Visit</a>
       </div>
     </div>
     <div class="box reveal">
         <div class="col">
         <h3>Google Skillshop</h3>
         <p>Google Ads and Analytics certification courses.</p>
-        <a href="https://skillshop.withgoogle.com" class="btn" target="_blank">Visit</a>
+        <a href="https://skillshop.withgoogle.com" class="btn" target="_blank" rel="noopener noreferrer">Visit</a>
         </div>
     </div>
 
@@ -516,14 +588,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="col">
          <h3>SEMrush Academy</h3>
         <p>SEO, PPC and keyword research training.</p>
-        <a href="https://www.semrush.com/academy" class="btn" target="_blank">Visit</a>
+        <a href="https://www.semrush.com/academy" class="btn" target="_blank" rel="noopener noreferrer">Visit</a>
       </div>
     </div>
     <div class="box reveal">
         <div class="col">
             <h3>Ahrefs Academy</h3>
         <p>Advanced SEO training and traffic growth strategies.</p>
-        <a href="https://ahrefs.com/academy" class="btn" target="_blank">Visit</a>
+        <a href="https://ahrefs.com/academy" class="btn" target="_blank" rel="noopener noreferrer">Visit</a>
         </div>
     </div>
 
@@ -546,6 +618,7 @@ At WebZee, we provide structured learning paths covering frontend development, b
 We believe in learning by doing. That's why WebZee focuses on providing trusted resources, development platforms, and industry-relevant technologies that help users gain hands-on experience and stay updated with modern web trends.
 
 Our goal is to build a strong developer community where learners can grow, innovate, and succeed in their journey toward becoming professional developers.
+Our Social media handle @developer.samar on instagram. The Founder name of Webzee Samar. He is a professional developer and digital marketing executive and AI expert.
 
 WebZee — Learn. Build. Grow.</p>
 
@@ -556,93 +629,106 @@ WebZee — Learn. Build. Grow.</p>
 </div>
 
     <h3>Quick Links</h3>
-    <div class="quick">
+    <ul class="quick">
         <li><a href="#home">Home</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#ask">Ask Ai</a></li>
-    <li><a href="#learning">Learning Resources</a></li>
-    </div>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index2.html">Digital Marketing</a></li>
+        <li><a href="index3.html">Web Dev</a></li>
+    </ul>
 
 <div class="icons">
-    <i class="fa-brands fa-instagram"></i>
+    <a href="https://instagram.com/developer.samar" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
     <i class="fa-brands fa-facebook"></i>
     <i class="fa-brands fa-x-twitter"></i>
     <i class="fa-brands fa-youtube"></i>
 </div>
 </footer>
-</body>
 <script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
 
-    function toggleTheme(){
-document.body.classList.toggle("dark");
+/* theme (class "dark" = light look, as in original) */
+window.toggleTheme=function(){
+  document.documentElement.classList.add('theme-anim');
+  const light=document.body.classList.toggle('dark');
+  try{localStorage.setItem('wz-theme',light?'light':'dark')}catch(e){}
+  setTimeout(()=>document.documentElement.classList.remove('theme-anim'),600);
+};
+
+/* menu */
+const ham=$('#hamburger'), menu=$('#menu');
+const setMenu=o=>{menu.classList.toggle('active',o);ham.classList.toggle('active',o);ham.setAttribute('aria-expanded',o)};
+ham.addEventListener('click',()=>setMenu(!menu.classList.contains('active')));
+menu.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+
+/* scroll: header shrink, progress bar, back-to-top */
+const header=$('header'), bar=$('#progress'), up=$('#toTop'); let tick=false;
+function onScroll(){
+  const y=scrollY, h=document.documentElement.scrollHeight-innerHeight;
+  header.classList.toggle('shrink',y>40);
+  bar.style.transform='scaleX('+(h>0?y/h:0)+')';
+  up.classList.toggle('show',y>500); tick=false;
 }
+addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true}); onScroll();
+up.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
 
+/* reveal with stagger */
+$$('.scroll').forEach(g=>[...g.children].forEach((c,i)=>c.style.setProperty('--i',i%6)));
+const rv=$$('.reveal');
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  rv.forEach(el=>io.observe(el));
+}else rv.forEach(el=>el.classList.add('in'));
 
-/* Toggle Menu */
-const hamburger = document.getElementById("hamburger");
-const menu = document.getElementById("menu");
+/* live search across resource cards */
+const groups=$$('.cont').map((c,i)=>({
+  cont:c, cards:$$('.cont')[i].querySelectorAll('.box'),
+  head:[c.previousElementSibling, c.previousElementSibling&&c.previousElementSibling.previousElementSibling],
+  kw:['frontend front-end html css javascript framework web development practice','digital marketing seo ads social media'][i]||''
+}));
+const empty=document.createElement('p'); empty.className='empty'; empty.hidden=true;
+$('.ads').before(empty);
+const input=$('#courseSearch');
+input.addEventListener('input',()=>{
+  const q=input.value.toLowerCase().trim(); let total=0;
+  groups.forEach(g=>{
+    let n=0;
+    g.cards.forEach(c=>{
+      const hit=!q||g.kw.includes(q)||c.textContent.toLowerCase().includes(q);
+      c.hidden=!hit; if(hit){n++;c.classList.add('in')}
+    });
+    g.cont.hidden=!n; g.head.forEach(h=>h&&(h.hidden=!n)); total+=n;
+  });
+  empty.hidden=total>0;
+  empty.innerHTML='No match for "<b></b>" here. <a href="index3.html">Browse all Web Dev resources</a>';
+  empty.querySelector('b').textContent=input.value.trim();
+});
+input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();$('.page-title').scrollIntoView({behavior:'smooth'})}});
 
-hamburger.addEventListener("click", () => {
-menu.classList.toggle("active");
-hamburger.classList.toggle("active");
+/* contact form -> WhatsApp */
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)};
+$('#contactForm').addEventListener('submit',e=>{
+  e.preventDefault(); const f=e.target.elements;
+  const msg='Hello WebZee, I am '+f.name.value.trim()+' ('+f.phone.value.trim()+'). '+f.msg.value.trim();
+  window.open('https://wa.me/918709655157?text='+encodeURIComponent(msg),'_blank','noopener');
+  toast('Opening WhatsApp…'); e.target.reset();
 });
 
-
-document.getElementById("courseSearch").addEventListener("change", function () {
-
-    let value = this.value.toLowerCase().trim();
-
-    let routes = {
-        "frontend": "#frontend",
-        "javascript": "#javascript",
-        "framework": "#framework",
-        "backend": "#backend",
-        "database": "#database",
-        "full stack development": "#full",
-        "practice": "#practice"
-    };
-
-    if (routes[value]) {
-        window.location.href = routes[value]; // open section
-    } else {
-        alert("Course not found");
-    }
-});
-
-/* Sticky header shrink on scroll */
-const siteHeader = document.querySelector('header');
-window.addEventListener('scroll', () => {
-    siteHeader.classList.toggle('shrink', window.scrollY > 40);
-});
-
-/* Scroll-reveal for cards and sections */
-const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => entry.target.classList.add('in'), i * 60);
-                io.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-} else {
-    revealEls.forEach(el => el.classList.add('in'));
-}
-
-/* Terminal typing signature */
-(function typeLine(){
-    const target = document.getElementById('typedLine');
-    if (!target) return;
-    const text = "const developer = new WebZee.Student();";
-    let i = 0;
-    const cursor = '<span class="cursor">&nbsp;</span>';
-    const timer = setInterval(() => {
-        target.innerHTML = text.slice(0, i) + cursor;
-        i++;
-        if (i > text.length) clearInterval(timer);
-    }, 40);
+/* terminal compile sequence */
+(async function(){
+  const spans=$$('#termBody span[data-t]'); if(!spans.length)return;
+  const cur=document.createElement('span'); cur.className='cursor'; cur.innerHTML='&nbsp;';
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){spans[spans.length-1].after(cur);return}
+  spans.forEach(s=>s.textContent='');
+  for(const s of spans){
+    s.after(cur); const t=s.dataset.t;
+    for(let i=1;i<=t.length;i++){s.textContent=t.slice(0,i);await wait(32)}
+    await wait(300);
+  }
+})();
 })();
 </script>
+</body>
 </html>
