@@ -27,12 +27,6 @@ h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-bac
 h2{font-size:1.6rem;margin-bottom:6px}
 .sub{color:var(--muted);margin-bottom:24px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.cover{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 65px;
-}
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
 .card .ic{font-size:1.8rem}
 .card h3{margin:8px 0 6px;font-size:1.1rem}
@@ -62,7 +56,7 @@ footer{text-align:center;padding:32px 5%;color:var(--muted);border-top:1px solid
     <a class="hide" href="#learn">Kya Seekhenge</a>
     <a class="hide" href="#how">Kaise Milega</a>
     <a href="#buy" class="btn" style="padding:8px 16px">Buy Now</a>
-    <!-- <button class="btn ghost" id="theme" aria-label="Theme switch">🌓</button> -->
+    <button class="btn ghost" id="theme" aria-label="Theme switch">🌓</button>
   </nav>
 </header>
 
@@ -70,7 +64,7 @@ footer{text-align:center;padding:32px 5%;color:var(--muted);border-top:1px solid
   <span class="tag">📘 WebZee E-Book • By Samar</span>
   <h1>Freelancing, Marketing, Web Dev & AI — <span>Sab Ek E-Book Me</span></h1>
   <p>Beginner se paid freelancer banne tak ka practical roadmap. QR scan karke payment karein aur e-book aapke Email aur WhatsApp par paayein.</p>
-  <a href="#buy" class="btn"> Buy now E-Book  →</a>
+  <a href="#buy" class="btn">E-Book Kharidein →</a>
 </section>
 
 <section id="learn">
@@ -83,53 +77,13 @@ footer{text-align:center;padding:32px 5%;color:var(--muted);border-top:1px solid
     <div class="card"><div class="ic">🤖</div><h3>AI Ka Use Kahin Bhi</h3><p>Content, design, video, coding aur kaam automate karne ke AI tools.</p></div>
   </div>
 </section>
-<section id="cover">
-<div class="cover">
-    <img src="AI Earnings Guide Book Mockup.png" alt="cover of Earn with Ai" width="30%">
-  <div class="about">
-    <p><h3><b>Is Book Ko Kaise Use Karein</b></h3><br>
-<b>> read once. apply daily. earn steadily.</b> <br> <br>
-Ye guide un logon ke liye hai jo theory nahi, practical results chahte hain. Har page par ek topic hai:
-chhoti explanation, step-by-step method, copy-paste prompt aur kamai ka clear idea. Prompt use karne
-se pehle [square brackets] ki jagah apni details bharo. Prompts English mein diye gaye hain kyunki AI
-tools English prompts par best results dete hain. Aap chahein to unhe Hinglish mein bhi try kar sakte
-ho.
-1
-Ek raasta chuno
-Table of contents dekho aur EK income skill chuno: writing, design, marketing, ads, websites ya
-freelancing. Focus variety se behtar hai.
-2
-Foundation pakka karo
-Pehle Chapter 1 aur 2 padho. AI, internet aur prompting samajhne se baaki sab chapters better
-kaam karte hain.
-3
-Roz practice karo
-Roz ek page karo. Prompt chalao, output edit karo aur best results ko portfolio samples ki tarah save
-karo.
-4
-Apni skill becho
-Chapter 8 se portfolio banao, clients dhundo, price set karo aur professionally deliver karo.
-5
-Track karo aur sudharo
-Likho kya try kiya, kya chala aur clients ne kya kaha. Har hafte ek cheez improve karo.
-! IMPORTANT NOTE
-AI skills se income aapki mehnat, quality, niche aur market par depend karti hai. Ye book methods deti
-hai, guarantee nahi. AI output hamesha verify karo, copyright aur platform rules respect karo, client data
-protect karo aur legal, tax aur financial matters mein professional se salah lo.</p>
-  </div>
-</div>
-<br>
-<br>
-  <center><p>Cover of <br><h3><i>"How to use Ai For Earning"</i></h3></p></center>
-  
-</section>
 
 <section id="buy">
   <h2>E-Book Order Karein</h2>
   <p class="sub">Sirf 3 minute me payment aur access request.</p>
   <div class="buy">
     <div class="card qrbox">
-      <div class="price">₹99 <s>₹299</s></div>
+      <div class="price">₹199 <s>₹499</s></div>
       <ul class="list">
         <li>Complete e-book (PDF)</li>
         <li>4 skills: Freelancing, Marketing, Web Dev, AI</li>
@@ -169,6 +123,7 @@ protect karo aur legal, tax aur financial matters mein professional se salah lo.
 </footer>
 
 <script>
+var API_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL";
 var AMOUNT = 199;
 var OWNER_WA = "918709655157";
 document.getElementById("theme").onclick = function(){
@@ -181,13 +136,19 @@ document.getElementById("submit").onclick = function(){
       e = document.getElementById("email").value.trim(),
       w = document.getElementById("wa").value.trim(),
       u = document.getElementById("utr").value.trim(),
-      m = document.getElementById("msg");
+      m = document.getElementById("msg"), b = this;
   if(!n || !/^\S+@\S+\.\S+$/.test(e) || w.replace(/\D/g,"").length < 10 || u.length < 8){
     m.textContent = "⚠️ Kripya sabhi details sahi se bharein."; return;
   }
-  var text = "Hello WebZee! Maine E-Book kharidi hai.\nNaam: " + n + "\nEmail: " + e + "\nWhatsApp: " + w + "\nUTR: " + u + "\nAmount: ₹" + AMOUNT;
-  m.textContent = "✅ WhatsApp khul raha hai — message send karein, verify hote hi e-book mil jayegi.";
-  window.open("https://wa.me/" + OWNER_WA + "?text=" + encodeURIComponent(text), "_blank");
+  b.disabled = true; m.textContent = "Submit ho raha hai...";
+  fetch(API_URL, {method:"POST", body: JSON.stringify({action:"submit", name:n, email:e, wa:w, utr:u})})
+    .then(function(r){return r.json()})
+    .then(function(r){
+      b.disabled = false;
+      if(r.ok){ m.textContent = "✅ Order ID: " + r.orderId + " — Payment verify hote hi e-book aapke Email aur WhatsApp par aa jayegi."; }
+      else { m.textContent = "⚠️ " + r.error; }
+    })
+    .catch(function(){ b.disabled = false; m.textContent = "⚠️ Network error, dobara try karein."; });
 };
 </script>
 </body>

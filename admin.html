@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hi"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WebZee Admin</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--text:#14182b;--muted:#5b6380;--brand:#4f46e5;--brand2:#06b6d4;--border:#e3e7f2;--ok:#16a34a;--bad:#dc2626;--warn:#d97706;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1020;--card:#161a30;--text:#eef0fa;--muted:#9aa3c7;--border:#262c4d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1020;--card:#161a30;--text:#eef0fa;--muted:#9aa3c7;--border:#262c4d;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,Arial,sans-serif;padding:0 5% 40px}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:10px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.3rem;background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{border:0;cursor:pointer;font:inherit;font-weight:600;padding:9px 16px;border-radius:10px;color:#fff;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+.btn.g{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn.ok{background:var(--ok)}.btn.bad{background:var(--bad)}.btn.wa{background:#25d366}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px}
+input{width:100%;padding:12px;margin:8px 0 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit}
+#login{max-width:380px;margin:12vh auto}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px}
+.stats b{font-size:1.7rem;display:block}.stats span{color:var(--muted);font-size:.85rem}
+.tabs{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
+.tabs .btn.on{background:linear-gradient(90deg,var(--brand),var(--brand2));color:#fff}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:760px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--border);vertical-align:middle}
+th{color:var(--muted);font-weight:600}
+.pill{padding:3px 10px;border-radius:99px;font-size:.78rem;font-weight:700;color:#fff}
+.Pending{background:var(--warn)}.Approved{background:var(--ok)}.Rejected{background:var(--bad)}
+td .btn{padding:6px 10px;font-size:.8rem;margin:2px}
+.err{color:var(--bad);font-size:.88rem}
+</style></head><body>
+<div id="login" class="card">
+  <div class="logo">WebZee Admin</div>
+  <p style="color:var(--muted);font-size:.9rem;margin-top:4px">Orders approve karne ke liye login karein</p>
+  <input id="pw" type="password" placeholder="Admin password">
+  <button class="btn" style="width:100%" id="go">Login</button>
+  <p class="err" id="lerr"></p>
+</div>
+<div id="app" hidden>
+  <header><div class="logo">WebZee Admin • E-Book Orders</div>
+    <div><button class="btn g" id="ref">🔄 Refresh</button> <button class="btn g" id="out">Logout</button></div></header>
+  <div class="stats">
+    <div class="card"><b id="sP">0</b><span>Pending</span></div>
+    <div class="card"><b id="sA">0</b><span>Approved</span></div>
+    <div class="card"><b id="sR">0</b><span>Rejected</span></div>
+    <div class="card"><b id="sM">₹0</b><span>Revenue (approved)</span></div>
+  </div>
+  <div class="card">
+    <div class="tabs" id="tabs"></div>
+    <input id="q" placeholder="Search naam / email / UTR / order ID">
+    <div class="wrap"><table><thead><tr><th>Date</th><th>Order</th><th>Customer</th><th>WhatsApp</th><th>UTR</th><th>Status</th><th>Action</th></tr></thead><tbody id="rows"></tbody></table></div>
+    <p class="err" id="err"></p>
+  </div>
+</div>
+<script>
+var API_URL = "https://script.google.com/macros/s/AKfycbxycvYR0W-9HpKOaCb-HEzi4IhNym81ElpZduRcewMYZBoCdbvDwBPn7JeyUanbvl_BDA/exec";
+var EBOOK_NAME = "WebZee E-Book";
+var pw = sessionStorage.getItem("wzpw") || "", orders = [], tab = "Pending", ebook = "";
+function $(i){return document.getElementById(i)}
+function call(body){
+  body.password = pw;
+  return fetch(API_URL,{method:"POST",body:JSON.stringify(body)}).then(function(r){return r.json()});
+}
+function load(){
+  $("err").textContent="Loading...";
+  call({action:"list"}).then(function(r){
+    if(!r.ok){ $("err").textContent=r.error; if(/password/i.test(r.error)) logout(); return; }
+    $("err").textContent=""; orders=r.orders; show();
+  }).catch(function(){ $("err").textContent="Server se connect nahi ho paya (API_URL check karein)."; });
+}
+function show(){
+  var c={Pending:0,Approved:0,Rejected:0},m=0;
+  orders.forEach(function(o){c[o.status]=(c[o.status]||0)+1; if(o.status==="Approved") m+=Number(o.amount)||0;});
+  $("sP").textContent=c.Pending;$("sA").textContent=c.Approved;$("sR").textContent=c.Rejected;$("sM").textContent="₹"+m;
+  $("tabs").innerHTML=["Pending","Approved","Rejected","All"].map(function(t){
+    return '<button class="btn g'+(t===tab?' on':'')+'" data-t="'+t+'">'+t+'</button>';}).join("");
+  var q=$("q").value.toLowerCase();
+  var list=orders.filter(function(o){
+    return (tab==="All"||o.status===tab) && (!q || [o.name,o.email,o.utr,o.orderId,o.wa].join(" ").toLowerCase().indexOf(q)>-1);});
+  $("rows").innerHTML=list.length?list.map(function(o){
+    var d=new Date(o.time).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"});
+    var act=o.status==="Pending"?'<button class="btn ok" data-a="approve" data-id="'+o.orderId+'">Approve</button><button class="btn bad" data-a="reject" data-id="'+o.orderId+'">Reject</button>':'';
+    if(o.status==="Approved") act='<button class="btn wa" data-a="wa" data-id="'+o.orderId+'">WhatsApp bhejein</button>';
+    return '<tr><td>'+d+'</td><td>'+o.orderId+'</td><td>'+esc(o.name)+'<br><small style="color:var(--muted)">'+esc(o.email)+'</small></td><td>'+esc(o.wa)+'</td><td>'+esc(o.utr)+'</td><td><span class="pill '+o.status+'">'+o.status+'</span></td><td>'+act+'</td></tr>';
+  }).join(""):'<tr><td colspan="7" style="color:var(--muted)">Koi order nahi.</td></tr>';
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function waSend(o){
+  var n=String(o.wa).replace(/\D/g,""); if(n.length===10) n="91"+n;
+  var t="Namaste "+o.name+"! Aapka payment verify ho gaya hai ✅\n📘 "+EBOOK_NAME+" yahan se download karein:\n"+ebook+"\nOrder ID: "+o.orderId;
+  window.open("https://wa.me/"+n+"?text="+encodeURIComponent(t),"_blank");
+}
+document.addEventListener("click",function(e){
+  var t=e.target.dataset; if(!t) return;
+  if(t.t){tab=t.t;show();return;}
+  if(!t.a) return;
+  var o=orders.filter(function(x){return x.orderId===t.id})[0];
+  if(t.a==="wa"){ if(!ebook){ call({action:"approve",orderId:t.id}).then(function(r){ebook=r.ebookLink||"";waSend(o);}); } else waSend(o); return; }
+  if(!confirm((t.a==="approve"?"Approve":"Reject")+" order "+t.id+"?"+(t.a==="approve"?"\nCustomer ko email par e-book chali jayegi.":""))) return;
+  e.target.disabled=true;
+  call({action:t.a,orderId:t.id}).then(function(r){
+    if(!r.ok){alert(r.error);return;}
+    ebook=r.ebookLink||ebook; load();
+    if(t.a==="approve" && confirm("Email bhej di gayi ✅\nAb WhatsApp par bhi bhejein?")) waSend(o);
+  });
+});
+$("q").oninput=show; $("ref").onclick=load;
+function logout(){sessionStorage.removeItem("wzpw");pw="";$("app").hidden=true;$("login").hidden=false;}
+$("out").onclick=logout;
+$("go").onclick=function(){
+  pw=$("pw").value; $("lerr").textContent="";
+  call({action:"list"}).then(function(r){
+    if(!r.ok){$("lerr").textContent=r.error;return;}
+    sessionStorage.setItem("wzpw",pw);$("login").hidden=true;$("app").hidden=false;orders=r.orders;show();
+  }).catch(function(){$("lerr").textContent="API_URL check karein.";});
+};
+$("pw").onkeydown=function(e){if(e.key==="Enter")$("go").click()};
+if(pw){$("login").hidden=true;$("app").hidden=false;load();}
+</script></body></html>
